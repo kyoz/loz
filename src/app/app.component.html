@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="header">
+    <core-toolbar></core-toolbar>
+  </div>
+
+  <div class="body">
+    <as-split direction="horizontal">
+      <as-split-area [size]="40" [maxSize]="60">
+        <core-tree></core-tree>
+      </as-split-area>
+      <as-split-area [size]="60" [maxSize]="80">
+        <core-editor></core-editor>
+      </as-split-area>
+    </as-split>
+  </div>
+</div>
