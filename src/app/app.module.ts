@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { AngularSplitModule } from 'angular-split';
+import { MaterialComponentsModule } from './core/modules/material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -22,10 +24,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     CoreModule,
     AngularSplitModule,
+    MaterialComponentsModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {

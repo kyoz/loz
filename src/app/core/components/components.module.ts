@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MaterialComponentsModule } from '../modules/material.module';
 
 // Components
 import { CoreToolbarComponent } from '../components/toolbar/toolbar.component';
@@ -12,7 +13,9 @@ const COMPONENTS = [
 ];
 
 @NgModule({
-  imports: [],
+  imports: [
+    MaterialComponentsModule,
+  ],
   declarations: [
     ...COMPONENTS
   ],
