@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { FunctionsService } from '../../services';
 
 @Component({
   selector: 'core-toolbar',
@@ -7,6 +8,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoreToolbarComponent {
-  
+  constructor(
+    public functions: FunctionsService
+  ) {
+    
+  }
 }
 

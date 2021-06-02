@@ -1,1 +1,2 @@
-export * from './electron/electron.service';
+export * from './electron.service';
+export * from './functions.service';
