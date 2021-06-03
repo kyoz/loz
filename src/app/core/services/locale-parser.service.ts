@@ -28,7 +28,7 @@ export class LocaleParserService {
       });
     }
 
-    return this.recursiveParseMaterialTree(mergedLocaleData);
+    return _.values(this.recursiveParseMaterialTree(mergedLocaleData));
   }
   
   private recursiveParseLocale(
@@ -69,7 +69,7 @@ export class LocaleParserService {
         key,
         path: '?',
         value: [],
-        children: this.recursiveParseMaterialTree(data[key]),
+        children: _.values(this.recursiveParseMaterialTree(data[key])),
       };
     }
 
