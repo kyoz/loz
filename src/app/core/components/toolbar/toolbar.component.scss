@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   height: 100%;
   width: 100%;
   padding: 0 12px;
@@ -26,14 +26,25 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 8px;
+    padding: 0 8px 2px 8px;
+    border-radius: 4px;
+    min-height: calc(100% - 8px);
+    max-height: calc(100% - 8px);
+    box-sizing: border-box;
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(0,0,0,.08);
+    }
 
     .label {
       font-size: .72em;
       color: rgba(0,0,0,.48);
-      min-height: 12px;
-      max-height: 12px;
+      min-height: 16px;
+      max-height: 16px;
       padding-top: 2px;
+      box-sizing: border-box;
     }
   }
 }
