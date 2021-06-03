@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MaterialComponentsModule } from '../modules/material.module';
 
 // Components
@@ -14,6 +15,7 @@ const COMPONENTS = [
 
 @NgModule({
   imports: [
+    CommonModule,
     MaterialComponentsModule,
   ],
   declarations: [
