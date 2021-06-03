@@ -1,22 +1,39 @@
 .container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
   width: 100%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   padding: 0 12px;
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
   .left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
 
-    .button {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
+  .button {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 8px;
+
+    .label {
+      font-size: .72em;
+      color: rgba(0,0,0,.48);
+      min-height: 12px;
+      max-height: 12px;
+      padding-top: 2px;
     }
   }
 }
