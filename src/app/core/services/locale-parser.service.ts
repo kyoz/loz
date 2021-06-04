@@ -52,12 +52,17 @@ export class LocaleParserService {
     return data;
   }
   
-  private recursiveParseMaterialTree(data: Record<string, any>): Locale[] {
+  private recursiveParseMaterialTree(
+    data: Record<string, any>,
+    parentPath: string = undefined
+  ): Locale[] {
     for (const key in data) {
+      const path = parentPath ? `${parentPath}.${key}` : key;
+
       if (Array.isArray(data[key])) {
         data[key] = {
           key,
-          path: '?',
+          path,
           values: data[key],
           children: [],
         };
@@ -67,9 +72,9 @@ export class LocaleParserService {
 
       data[key] = {
         key,
-        path: '?',
+        path,
         value: [],
-        children: _.values(this.recursiveParseMaterialTree(data[key])),
+        children: _.values(this.recursiveParseMaterialTree(data[key], path)),
       };
     }
 
