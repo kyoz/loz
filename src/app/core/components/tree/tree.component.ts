@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { NestedTreeControl } from '@angular/cdk/tree';
+import { NestedTreeControl, CdkNestedTreeNode } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { Locale } from '../../interfaces/locale';
 
