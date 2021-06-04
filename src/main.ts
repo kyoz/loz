@@ -12,4 +12,9 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule, {
     preserveWhitespaces: false
   })
+  .then(() => {
+    const coreLoaderEl = document.getElementById('CORE_LOADER');
+
+    coreLoaderEl.classList.add('hide');
+  })
   .catch(err => console.error(err));
