@@ -24,9 +24,27 @@ export class CoreTreeComponent implements OnInit {
 
   ngOnInit() {
     this.data.tree$.subscribe(tree => {
-      console.log(tree);
       this.dataSource.data = tree;
     });
+  }
+
+  onNodeClick(node) {
+    if (node && node.path !== this.data.currentNode$.value?.path) {
+      this.data.currentNode$.next(node);
+    }
+  }
+
+  onNodeDoubleClick(node) {
+    this.treeControl.toggle(node);
+  }
+
+  preventClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  trackByKey(index: string, node: Locale) {
+    return node.key;
   }
 
   hasChild = (_: number, node: Locale) => !!node.children && node.children.length > 0;

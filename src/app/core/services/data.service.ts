@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService {
 
   tree$ = new BehaviorSubject([]);
+  currentNode$ = new BehaviorSubject(undefined);
 
   constructor() { }
 }
