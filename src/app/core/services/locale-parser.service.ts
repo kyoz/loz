@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Locale, LocaleValue } from '../interfaces';
+import { Locale } from '../interfaces';
 import * as _ from 'lodash';
+
+// Services
+import { DataService } from './data.service';
 
 @Injectable({providedIn: 'root'})
 export class LocaleParserService {
 
-  constructor() { }
+  constructor(private data: DataService) { }
 
   parseToTree(localeData: Record<string, any>): Locale[] {
     const localeList = Object.keys(localeData);
@@ -28,6 +31,8 @@ export class LocaleParserService {
       });
     }
 
+    // Now parse to material tree data and also gen data map
+    this.data.dataMap = {};
     return _.values(this.recursiveParseMaterialTree(mergedLocaleData));
   }
   
@@ -67,13 +72,20 @@ export class LocaleParserService {
           children: [],
         };
 
+        // Also map global data
+        this.data.dataMap[path] = {};
+
+        for (const localeItem of data[key].values) {
+          this.data.dataMap[path][localeItem.locale] = localeItem.value;
+        }
+
         continue;
       }
 
       data[key] = {
         key,
         path,
-        value: [],
+        values: [],
         children: _.values(this.recursiveParseMaterialTree(data[key], path)),
       };
     }

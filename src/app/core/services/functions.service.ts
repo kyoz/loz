@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { locales } from '../constants/locales';
 
 // Services
 import { ElectronService } from './electron.service';
@@ -86,6 +87,7 @@ export class FunctionsService {
   }
 
   private isValidI18nFile(fileName: string): boolean {
-    return this.localeNameRegex.test(fileName);
+    return this.localeNameRegex.test(fileName) &&
+      locales.includes(fileName.replace('.json', ''));
   }
 }
