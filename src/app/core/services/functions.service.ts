@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 
 // Services
 import { ElectronService } from './electron.service';
-import { LocaleParserService } from './locale-parser.service';
-import { AppStateService } from './app-state.service';
 import { DataService } from './data.service';
+import { LoaderService } from './loader.service';
+import { LocaleParserService } from './locale-parser.service';
 
 @Injectable({providedIn: 'root'})
 export class FunctionsService {
@@ -13,7 +13,7 @@ export class FunctionsService {
 
   constructor(
     private electron: ElectronService,
-    private appState: AppStateService,
+    private loader: LoaderService,
     private data: DataService,
     private localParser: LocaleParserService,
   ) { }
@@ -62,11 +62,14 @@ export class FunctionsService {
         localeMap[locale] = localeData;
       }
 
-      this.appState.isProcessing$.next(true);
+      this.loader.show();
 
-      this.data.tree$.next(this.localParser.parseToTree(localeMap));
+      // Delay a litle bit to ensure loader is displayed
+      setTimeout(() => {
+        this.data.tree$.next(this.localParser.parseToTree(localeMap));
 
-      this.appState.isProcessing$.next(false);
+        this.loader.hide();
+      }, 200);
     } catch (e) {
       alert('Error when parsing i18n files.');
     }

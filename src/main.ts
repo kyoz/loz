@@ -16,5 +16,10 @@ platformBrowserDynamic()
     const coreLoaderEl = document.getElementById('CORE_LOADER');
 
     coreLoaderEl.classList.add('hide');
+
+    // Remove core loader from dom cause it's useless now
+    setTimeout(() => {
+      coreLoaderEl.parentNode.removeChild(coreLoaderEl);
+    }, 1000);
   })
   .catch(err => console.error(err));

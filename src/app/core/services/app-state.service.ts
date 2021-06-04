@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { LoaderService } from './loader.service';
 
 @Injectable({providedIn: 'root'})
 export class AppStateService {
 
-  isProcessing$ = new BehaviorSubject(false);
-
-  constructor() { }
+  constructor(private loader: LoaderService) {
+  }
 }

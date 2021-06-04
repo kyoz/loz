@@ -60,6 +60,9 @@
         "@typescript-eslint/no-unsafe-return": 0,
         "@typescript-eslint/no-floating-promises": 0,
         "@typescript-eslint/semi": "error",
+        "@typescript-eslint/explicit-function-return-type": {
+          "allowExpressions": true
+        },
         "@angular-eslint/use-injectable-provided-in": "error",
         "@angular-eslint/no-attribute-decorator": "error"
       }

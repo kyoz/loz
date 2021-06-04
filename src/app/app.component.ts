@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
-import { ElectronService } from './core/services';
+import { Component, OnInit } from '@angular/core';
+
+// Services
 import { TranslateService } from '@ngx-translate/core';
-import { AppConfig } from '../environments/environment';
+import { ElectronService, LoaderService } from './core/services';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(
     private electronService: ElectronService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private loader: LoaderService,
   ) {
     this.translate.setDefaultLang('en');
 
@@ -23,5 +25,9 @@ export class AppComponent {
     } else {
       console.log('Run in browser');
     }
+  }
+
+  ngOnInit() {
+    this.loader.init();
   }
 }

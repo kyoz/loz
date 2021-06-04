@@ -8,16 +8,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: display;
+  visibility: visible;
   transition: 500ms opacity 200ms ease-in-out,
               500ms visibility 200ms ease-in-out;
+  z-index: 100000;
 
   .core-loader {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    height: 1rem;
-    width: 1rem;
+    height: 0.8rem;
+    width: 0.8rem;
     transform: translateX(-50%) translateY(-50%);
   }
 
@@ -25,71 +23,71 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 1rem;
-    width: 1rem;
+    height: 0.8rem;
+    width: 0.8rem;
   }
 
   .block > .item {
     position: absolute;
-    height: 1rem;
-    width: 1rem;
-    background: #1e88e5;
+    height: 0.8rem;
+    width: 0.8rem;
+    background: var(--color-primary);
     -webkit-animation: move 0.5s linear infinite;
             animation: move 0.5s linear infinite;
   }
 
   .block > .item:nth-of-type(1) {
-    top: -1rem;
-    left: -1rem;
+    top: -0.8rem;
+    left: -0.8rem;
     -webkit-animation-delay: 0s;
             animation-delay: 0s;
   }
 
   .block > .item:nth-of-type(2) {
-    top: -1rem;
+    top: -0.8rem;
     left: 0;
     -webkit-animation-delay: -0.0625s;
             animation-delay: -0.0625s;
   }
 
   .block > .item:nth-of-type(3) {
-    top: -1rem;
-    left: 1rem;
+    top: -0.8rem;
+    left: 0.8rem;
     -webkit-animation-delay: -0.125s;
             animation-delay: -0.125s;
   }
 
   .block > .item:nth-of-type(4) {
     top: 0;
-    left: 1rem;
+    left: 0.8rem;
     -webkit-animation-delay: -0.1875s;
             animation-delay: -0.1875s;
   }
 
   .block > .item:nth-of-type(5) {
-    top: 1rem;
-    left: 1rem;
+    top: 0.8rem;
+    left: 0.8rem;
     -webkit-animation-delay: -0.25s;
             animation-delay: -0.25s;
   }
 
   .block > .item:nth-of-type(6) {
-    top: 1rem;
+    top: 0.8rem;
     left: 0;
     -webkit-animation-delay: -0.3125s;
             animation-delay: -0.3125s;
   }
 
   .block > .item:nth-of-type(7) {
-    top: 1rem;
-    left: -1rem;
+    top: 0.8rem;
+    left: -0.8rem;
     -webkit-animation-delay: -0.375s;
             animation-delay: -0.375s;
   }
 
   .block > .item:nth-of-type(8) {
     top: 0;
-    left: -1rem;
+    left: -0.8rem;
     -webkit-animation-delay: -0.4375s;
             animation-delay: -0.4375s;
   }
