@@ -46,10 +46,10 @@ export class FunctionsService {
   configLanguages(): void {
     this.matDialog.open(LanguagesDialog, {
       autoFocus: false,
-      width: '800px',
-      height: '680px',
-      maxWidth: '90vw',
-      maxHeight: '90vh',
+      width: '980px',
+      height: '720px',
+      maxWidth: '94vw',
+      maxHeight: '94vh',
     });
   }
 

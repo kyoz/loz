@@ -55,6 +55,7 @@
     "@electron/remote": "1.0.4",
     "angular-split": "5.0.0",
     "core-js": "3.6.5",
+    "fuse.js": "6.4.6",
     "install": "0.13.0",
     "lodash": "4.17.21",
     "rxjs": "6.6.6",
