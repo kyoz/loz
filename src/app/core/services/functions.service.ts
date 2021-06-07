@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { locales } from '../constants/locales';
+import { localeKeys } from '../constants/locales';
+import { MatDialog } from '@angular/material/dialog';
+
+// Dialogs
+import { LanguagesDialog } from '../dialogs/languages/languages.dialog';
 
 // Services
 import { ElectronService } from './electron.service';
@@ -17,6 +21,7 @@ export class FunctionsService {
     private loader: LoaderService,
     private data: DataService,
     private localParser: LocaleParserService,
+    private matDialog: MatDialog,
   ) { }
 
   openI18nFolder(): void {
@@ -35,6 +40,16 @@ export class FunctionsService {
       }
 
       this.afterOpenI18nFolder(res.filePaths[0]);
+    });
+  }
+
+  configLanguages(): void {
+    this.matDialog.open(LanguagesDialog, {
+      autoFocus: false,
+      width: '800px',
+      height: '680px',
+      maxWidth: '90vw',
+      maxHeight: '90vh',
     });
   }
 
@@ -88,6 +103,6 @@ export class FunctionsService {
 
   private isValidI18nFile(fileName: string): boolean {
     return this.localeNameRegex.test(fileName) &&
-      locales.includes(fileName.replace('.json', ''));
+      localeKeys.includes(fileName.replace('.json', ''));
   }
 }

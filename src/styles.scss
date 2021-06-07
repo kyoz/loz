@@ -2,6 +2,9 @@
 @import './assets/scss/fonts/roboto.scss';
 @import './assets/scss/core-loader.scss';
 
+// Re-config for material components
+@import './assets/scss/material-dialog.scss';
+
 html, body {
   margin: 0;
   padding: 0;

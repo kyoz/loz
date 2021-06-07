@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MaterialComponentsModule } from '../modules/material.module';
 
 // Components
-import { CoreToolbarComponent } from '../components/toolbar/toolbar.component';
-import { CoreTreeComponent } from '../components/tree/tree.component';
-import { CoreEditorComponent } from '../components/editor/editor.component';
+import { CoreToolbarComponent } from './toolbar/toolbar.component';
+import { CoreTreeComponent } from './tree/tree.component';
+import { CoreEditorComponent } from './editor/editor.component';
 
 const COMPONENTS = [
   CoreToolbarComponent,
