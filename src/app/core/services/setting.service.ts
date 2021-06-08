@@ -11,9 +11,7 @@ import { StorageService } from './storage.service';
 @Injectable({providedIn: 'root'})
 export class SettingService {
   projects: Project[] = [];
-
-  languages = [];
-  primaryLanguage = '';
+  currentProject: Project;
 
   constructor(
     private storage: StorageService,
@@ -32,7 +30,7 @@ export class SettingService {
 
     if (existedProject) {
       if (project.languages.length) {
-        existedProject.languages = project.languages;
+        existedProject.languages = _.merge(existedProject.languages, project.languages);
       }
 
       if (project.primaryLanguage) {
@@ -40,8 +38,11 @@ export class SettingService {
       }
 
       existedProject.lastModified = moment().unix();
+      this.currentProject = _.cloneDeep(existedProject);
     } else {
+
       this.projects.push(project);
+      this.currentProject = _.cloneDeep(project);
     }
 
     this.storage.set(STORAGE_PROJECTS, this.projects);

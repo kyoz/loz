@@ -6,14 +6,17 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { locales } from '../../constants/locales';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import Fuse from 'fuse.js';
 import * as _ from 'lodash';
+import * as moment from 'moment';
 
 // Services
 import { NotifyService } from '../../services/notify.service';
+import { SettingService } from '../../services/setting.service';
 
 @Component({
   selector: 'languages-dialog',
@@ -35,8 +38,19 @@ export class LanguagesDialog implements OnInit, OnDestroy {
   subs: Subscription[] = [];
 
   constructor(
-    private notify: NotifyService
+    private dialogRef: MatDialogRef<LanguagesDialog>,
+    private setting: SettingService,
+    private notify: NotifyService,
   ) {
+    if (setting?.currentProject?.languages.length) {
+      this.selectedLanguageList$.next(setting?.currentProject?.languages.map(langId => {
+        return locales.find(d => d.id === langId);
+      }));
+    }
+
+    if (setting?.currentProject?.primaryLanguage.length) {
+      this.primaryLanguageId = setting?.currentProject?.primaryLanguage;
+    }
   }
 
   ngOnInit() {
@@ -116,12 +130,23 @@ export class LanguagesDialog implements OnInit, OnDestroy {
       this.notify.pushNotify('You must choose primary language');
       return;
     }
+
+    // Store setting to storage
+    this.setting.currentProject.languages = this.selectedLanguageList$.value.map(d => d.id);
+    this.setting.currentProject.primaryLanguage = this.primaryLanguageId;
+    this.setting.saveProject(this.setting.currentProject);
+
+    this.close();
   }
 
   scrollToTop(container: ElementRef) {
     if (container && container.nativeElement) {
       container.nativeElement.scrollTop = 0;
     }
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 }
 

@@ -5,10 +5,11 @@ import * as moment from 'moment';
 // Services
 import { ElectronService } from './electron.service';
 import { DataService } from './data.service';
+import { DialogsService } from './dialogs.service';
 import { LoaderService } from './loader.service';
 import { LocaleParserService } from './locale-parser.service';
-import { SettingService } from './setting.service';
 import { NotifyService } from './notify.service';
+import { SettingService } from './setting.service';
 
 @Injectable({providedIn: 'root'})
 export class FunctionsService {
@@ -17,11 +18,12 @@ export class FunctionsService {
 
   constructor(
     private electron: ElectronService,
-    private loader: LoaderService,
     private data: DataService,
+    private dialogs: DialogsService,
+    private loader: LoaderService,
     private localParser: LocaleParserService,
-    private setting: SettingService,
     private notify: NotifyService,
+    private setting: SettingService,
   ) { }
 
   openI18nFolder(): void {
@@ -87,6 +89,13 @@ export class FunctionsService {
         this.data.tree$.next(this.localParser.parseToTree(localeMap));
 
         this.loader.hide();
+
+        // Check to ensure language & primary language is configurated
+        if (!this.setting?.currentProject?.languages.length ||
+            !this.setting?.currentProject?.primaryLanguage) {
+
+          this.dialogs.openLanguagesConfig();
+        }
       }, 200);
     } catch (e) {
       alert('Error when parsing i18n files.');

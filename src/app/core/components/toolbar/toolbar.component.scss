@@ -15,6 +15,12 @@
     align-items: center;
   }
 
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .right {
     display: flex;
     justify-content: flex-end;
