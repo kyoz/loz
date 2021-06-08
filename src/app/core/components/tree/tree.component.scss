@@ -22,7 +22,6 @@
       left: -100vw;
       right: 0;
       background: unset;
-      z-index: -1;
       border-top: 1px solid transparent;
       border-bottom: 1px solid transparent;
     }
@@ -33,6 +32,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 1;
     }
 
     .expander.opened {
@@ -47,6 +47,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 1;
     }
 
     .key {
@@ -60,6 +61,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      z-index: 1;
     }
 
     &:hover {
