@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 // Services
-import {
-  ElectronService,
-  LoaderService,
-  SettingService,
-  TranslateService,
-} from './core/services';
+import { ElectronService } from './core/services/electron.service';
+import { DialogsService } from './core/services/dialogs.service';
+import { LoaderService } from './core/services/loader.service';
+import { SettingService } from './core/services/setting.service';
+import { TranslateService } from './core/services/translate.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +15,10 @@ import {
 export class AppComponent implements OnInit {
   constructor(
     private electronService: ElectronService,
-    private translate: TranslateService,
+    private dialogs: DialogsService,
     private loader: LoaderService,
     private setting: SettingService,
+    private translate: TranslateService,
   ) {
     if (electronService.isElectron) {
       console.log(process.env);
@@ -34,5 +34,9 @@ export class AppComponent implements OnInit {
     this.setting.init();
     this.translate.init();
     this.loader.init();
+
+    if (this.setting.projects.length) {
+      this.dialogs.openLatestProjects();
+    }
   }
 }

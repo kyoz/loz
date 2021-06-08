@@ -34,7 +34,9 @@ export class LanguagesDialog implements OnInit, OnDestroy {
 
   subs: Subscription[] = [];
 
-  constructor(private notify: NotifyService) {
+  constructor(
+    private notify: NotifyService
+  ) {
   }
 
   ngOnInit() {

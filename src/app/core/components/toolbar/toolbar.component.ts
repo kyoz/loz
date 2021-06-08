@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FunctionsService } from '../../services';
+import { FunctionsService } from '../../services/functions.service';
+import { DialogsService } from '../../services/dialogs.service';
 
 @Component({
   selector: 'core-toolbar',
@@ -9,7 +10,8 @@ import { FunctionsService } from '../../services';
 })
 export class CoreToolbarComponent {
   constructor(
-    public functions: FunctionsService
+    public functions: FunctionsService,
+    public dialogs: DialogsService,
   ) {
     
   }

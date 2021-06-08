@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { localeKeys } from '../constants/locales';
-import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
-
-// Dialogs
-import { LanguagesDialog } from '../dialogs/languages/languages.dialog';
 
 // Services
 import { ElectronService } from './electron.service';
@@ -25,7 +21,6 @@ export class FunctionsService {
     private data: DataService,
     private localParser: LocaleParserService,
     private setting: SettingService,
-    private matDialog: MatDialog,
     private notify: NotifyService,
   ) { }
 
@@ -45,17 +40,6 @@ export class FunctionsService {
       }
 
       this.processI18nFolder(res.filePaths[0]);
-    });
-  }
-
-  configLanguages(): void {
-    this.matDialog.open(LanguagesDialog, {
-      autoFocus: false,
-      disableClose: true,
-      width: '980px',
-      height: '720px',
-      maxWidth: '94vw',
-      maxHeight: '94vh',
     });
   }
 

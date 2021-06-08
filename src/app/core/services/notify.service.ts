@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 // Services
-import { TranslateService } from '../services/translate.service';
+import { TranslateService } from './translate.service';
 
 @Injectable({providedIn: 'root'})
 export class NotifyService {
