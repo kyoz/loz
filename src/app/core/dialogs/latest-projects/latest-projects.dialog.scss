@@ -24,10 +24,50 @@
   .content {
     flex: 1;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: stretch;
     max-height: calc(100% - 112px);
+    overflow-x: hidden;
+    overflow-y: auto;
 
+    .project {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 12px 24px;
+      border-bottom: 1px solid rgba(0,0,0,.12);
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(0,0,0,.04);
+      }
+
+      .icon {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        align-self: stretch;
+        min-width: 48px;
+        max-width: 48px;
+      }
+
+      .info {
+        flex: 1;
+
+        .path {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          color: rgba(0,0,0,.48);
+        }
+
+        .languages {
+          padding-top: 8px;
+          color: var(--color-primary);
+        }
+      }
+    }
   }
 
   .footer {

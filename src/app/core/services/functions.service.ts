@@ -43,7 +43,7 @@ export class FunctionsService {
     });
   }
 
-  private processI18nFolder(folderPath: string): void {
+  processI18nFolder(folderPath: string): void {
     const fileNames = this.electron.fs.readdirSync(folderPath);
 
     if (!fileNames || fileNames.length === 0) {
