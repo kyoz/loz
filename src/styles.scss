@@ -6,6 +6,10 @@
 @import './assets/scss/material-dialog.scss';
 @import './assets/scss/material-snackbar.scss';
 
+// Global styles for component which render lots of times
+@import './assets/scss/components/tree.scss';
+@import './assets/scss/components/translation.scss';
+
 html, body {
   margin: 0;
   padding: 0;

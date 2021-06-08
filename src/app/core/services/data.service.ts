@@ -23,10 +23,7 @@ export class DataService {
         return;
       }
 
-      console.log(currentNode);
-      // this.currentKeys$.next(this.recursiveParseKeys(currentNode));
-      console.log(this.recursiveParseKeys(currentNode));
-      console.log('-------------------------------------------');
+      this.currentKeys$.next(this.recursiveParseKeys(currentNode));
     });
   }
 

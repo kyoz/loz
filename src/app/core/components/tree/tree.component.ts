@@ -9,7 +9,6 @@ import { DataService } from '../../services/data.service';
 @Component({
   selector: 'core-tree',
   templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoreTreeComponent implements OnInit {

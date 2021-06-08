@@ -1,0 +1,28 @@
+.translation {
+  width: 100%;
+  padding: 24px 16px;
+  border-bottom: 1px solid rgba(0,0,0,.24);
+
+  .key {
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: var(--color-primary);
+  }
+
+  table {
+    width: 100%;
+
+    td {
+      input {
+        width: 100%;
+        font-size: 1.1em;
+      }
+    }
+
+    td:first-child {
+      white-space: nowrap;
+      width: 1%;
+      padding-right: 12px;
+    }
+  }
+}

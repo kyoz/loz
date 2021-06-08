@@ -1,5 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
+// Services
+import { DataService } from '../../services/data.service';
+
 @Component({
   selector: 'core-editor',
   templateUrl: './editor.component.html',
@@ -7,7 +10,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoreEditorComponent {
-  
+  constructor(public data: DataService) {
+  }
 }
 
 

@@ -1,0 +1,12 @@
+<div class="translation">
+  <div class="key">{{key}}</div>
+
+  <table>
+    <tr *ngFor="let lang of setting.currentProject.languages">
+      <td>{{lang}}</td>
+      <td>
+        <input [(ngModel)]="data.dataMap[key][lang]"/>
+      </td>
+    </tr>
+  </table>
+</div>
