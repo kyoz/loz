@@ -8,7 +8,8 @@
 
   .mat-tree-node {
     position: relative;
-    height: 32px;
+    min-height: 32px;
+    max-height: 32px;
     width: 100%;
     padding: 0 16px;
     cursor: pointer;
@@ -80,7 +81,7 @@
   }
 
   .tree .mat-nested-tree-node div[role=group] {
-    padding-left: 16px;
+    padding-left: 18px;
   }
 
   .tree div[role=group] > .mat-tree-node {

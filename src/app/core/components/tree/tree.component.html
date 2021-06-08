@@ -32,7 +32,10 @@
             src="../../../../assets/icons/tree/arrow_right.png" />
         </div>
         
-        <div class="icon">
+        <div class="icon"
+          (click)="onNodeClick(node)"
+          (dblclick)="onNodeDoubleClick(node)"
+        >
           <img width="auto" height="28px" 
             src="../../../../assets/icons/tree/folder.png" />
         </div>
