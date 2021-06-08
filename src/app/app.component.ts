@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 // Services
-import { TranslateService } from '@ngx-translate/core';
-import { ElectronService, LoaderService } from './core/services';
+import {
+  ElectronService,
+  LoaderService,
+  SettingService,
+  TranslateService,
+} from './core/services';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +18,8 @@ export class AppComponent implements OnInit {
     private electronService: ElectronService,
     private translate: TranslateService,
     private loader: LoaderService,
+    private setting: SettingService,
   ) {
-    this.translate.setDefaultLang('en');
-
     if (electronService.isElectron) {
       console.log(process.env);
       console.log('Run in electron');
@@ -28,6 +31,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setting.init();
+    this.translate.init();
     this.loader.init();
   }
 }

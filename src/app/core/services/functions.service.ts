@@ -10,6 +10,8 @@ import { ElectronService } from './electron.service';
 import { DataService } from './data.service';
 import { LoaderService } from './loader.service';
 import { LocaleParserService } from './locale-parser.service';
+import { SettingService } from './setting.service';
+import { NotifyService } from './notify.service';
 
 @Injectable({providedIn: 'root'})
 export class FunctionsService {
@@ -21,7 +23,9 @@ export class FunctionsService {
     private loader: LoaderService,
     private data: DataService,
     private localParser: LocaleParserService,
+    private setting: SettingService,
     private matDialog: MatDialog,
+    private notify: NotifyService,
   ) { }
 
   openI18nFolder(): void {
@@ -39,13 +43,14 @@ export class FunctionsService {
         return;
       }
 
-      this.afterOpenI18nFolder(res.filePaths[0]);
+      this.processI18nFolder(res.filePaths[0]);
     });
   }
 
   configLanguages(): void {
     this.matDialog.open(LanguagesDialog, {
       autoFocus: false,
+      disableClose: true,
       width: '980px',
       height: '720px',
       maxWidth: '94vw',
@@ -53,7 +58,7 @@ export class FunctionsService {
     });
   }
 
-  private afterOpenI18nFolder(folderPath: string): void {
+  private processI18nFolder(folderPath: string): void {
     const fileNames = this.electron.fs.readdirSync(folderPath);
 
     if (!fileNames || fileNames.length === 0) {
@@ -62,13 +67,16 @@ export class FunctionsService {
     }
 
     if (!this.isValidI18nFolder(fileNames)) {
-      alert('Not valid folder');
+      this.setting.removeProject(folderPath);
+      this.notify.pushNotify('Not valid i18n folder');
       return;
     }
 
     const localeMap = [];
 
     try {
+      const languages = [];
+
       for (const fileName of fileNames) {
         const locale = fileName.replace('.json', '');
         const localeData = JSON.parse(
@@ -78,6 +86,14 @@ export class FunctionsService {
         localeMap[locale] = localeData;
       }
 
+      // Save project to storage for fast open next time
+      this.setting.saveProject({
+        path: folderPath,
+        languages: Object.keys(localeMap) || [],
+        primaryLanguage: ''
+      });
+
+      // Start parse data
       this.loader.show();
 
       // Delay a litle bit to ensure loader is displayed

@@ -12,6 +12,9 @@ import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import Fuse from 'fuse.js';
 import * as _ from 'lodash';
 
+// Services
+import { NotifyService } from '../../services/notify.service';
+
 @Component({
   selector: 'languages-dialog',
   templateUrl: './languages.dialog.html',
@@ -31,7 +34,7 @@ export class LanguagesDialog implements OnInit, OnDestroy {
 
   subs: Subscription[] = [];
 
-  constructor() {
+  constructor(private notify: NotifyService) {
   }
 
   ngOnInit() {
@@ -99,6 +102,18 @@ export class LanguagesDialog implements OnInit, OnDestroy {
     // Re adding to language list if it match search term
     this.onSearch$.next(undefined);
     this.onSearch$.next(this.searchInputEl.nativeElement.value);
+  }
+
+  accept() {
+    if (!this.selectedLanguageList$.value.length) {
+      this.notify.pushNotify('You must choose at least one languages');
+      return;
+    }
+
+    if (!this.primaryLanguageId.length) {
+      this.notify.pushNotify('You must choose primary language');
+      return;
+    }
   }
 
   scrollToTop(container: ElementRef) {
