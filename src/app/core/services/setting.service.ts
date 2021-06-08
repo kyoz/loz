@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { STORAGE_PROJECTS } from '../constants/storage-keys';
 import { Project } from '../interfaces';
+import * as moment from 'moment';
+import * as _ from 'lodash';
 
 
 // Services
@@ -21,7 +23,7 @@ export class SettingService {
     const projects = this.storage.get(STORAGE_PROJECTS);
 
     if (projects) {
-      this.projects = projects;
+      this.projects = _.orderBy(projects, ['lastModified'], ['desc']);
     }
   }
 
@@ -36,6 +38,8 @@ export class SettingService {
       if (project.primaryLanguage) {
         existedProject.primaryLanguage = project.primaryLanguage;
       }
+
+      existedProject.lastModified = moment().unix();
     } else {
       this.projects.push(project);
     }

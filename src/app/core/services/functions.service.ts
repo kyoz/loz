@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { localeKeys } from '../constants/locales';
 import { MatDialog } from '@angular/material/dialog';
+import * as moment from 'moment';
 
 // Dialogs
 import { LanguagesDialog } from '../dialogs/languages/languages.dialog';
@@ -90,7 +91,8 @@ export class FunctionsService {
       this.setting.saveProject({
         path: folderPath,
         languages: Object.keys(localeMap) || [],
-        primaryLanguage: ''
+        primaryLanguage: '',
+        lastModified: moment().unix(),
       });
 
       // Start parse data
