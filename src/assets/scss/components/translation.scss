@@ -8,6 +8,9 @@
     font-size: 0.9em;
     font-weight: bold;
     color: var(--color-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   table {
