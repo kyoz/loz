@@ -102,6 +102,10 @@ export class FunctionsService {
     }
   }
 
+  save() {
+    alert('save');
+  }
+
   private isValidI18nFolder(fileNames: string[]): boolean {
     for (const fileName of fileNames) {
       if (!this.isValidI18nFile(fileName)) {
