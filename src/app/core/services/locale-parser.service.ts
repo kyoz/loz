@@ -33,7 +33,10 @@ export class LocaleParserService {
 
     // Now parse to material tree data and also gen data map
     this.data.dataMap = {};
-    return _.values(this.recursiveParseMaterialTree(mergedLocaleData));
+    return _.orderBy(
+      _.values(this.recursiveParseMaterialTree(mergedLocaleData)),
+      ['key'], ['asc'],
+    );
   }
   
   private recursiveParseLocale(
@@ -86,7 +89,10 @@ export class LocaleParserService {
         key,
         path,
         values: [],
-        children: _.values(this.recursiveParseMaterialTree(data[key], path)),
+        children: _.orderBy(
+          _.values(this.recursiveParseMaterialTree(data[key], path)),
+          ['key'], ['asc']
+        ),
       };
     }
 
