@@ -6,6 +6,9 @@
 @import './assets/scss/material-dialog.scss';
 @import './assets/scss/material-snackbar.scss';
 
+// Other libraries re-styling
+@import './assets/scss/angular-split.scss';
+
 // Global styles for component which render lots of times
 @import './assets/scss/components/tree.scss';
 @import './assets/scss/components/translation.scss';

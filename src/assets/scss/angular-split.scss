@@ -1,0 +1,15 @@
+.as-split-gutter {
+  transition: background 200ms ease-in-out;
+
+  .as-split-gutter-icon {
+    transition: filter 200ms ease-in-out;
+  }
+
+  &:hover, &:active {
+    background: var(--color-primary) !important;
+
+    .as-split-gutter-icon {
+      filter: brightness(2);
+    }
+  }
+}
