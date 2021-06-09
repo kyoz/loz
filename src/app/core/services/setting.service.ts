@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { STORAGE_PROJECTS } from '../constants/storage-keys';
 import { Project } from '../interfaces';
+import { BehaviorSubject } from 'rxjs';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 
@@ -12,6 +13,9 @@ import { StorageService } from './storage.service';
 export class SettingService {
   projects: Project[] = [];
   currentProject: Project;
+
+  primaryLanguage$ = new BehaviorSubject('');
+  languages$ = new BehaviorSubject([]);
 
   constructor(
     private storage: StorageService,
@@ -30,7 +34,7 @@ export class SettingService {
 
     if (existedProject) {
       if (project.languages.length) {
-        existedProject.languages = _.merge(existedProject.languages, project.languages);
+        existedProject.languages = project.languages;
       }
 
       if (project.primaryLanguage) {
@@ -45,6 +49,12 @@ export class SettingService {
       this.currentProject = _.cloneDeep(project);
     }
 
+
+    // Set project current setting
+    this.languages$.next(this.currentProject.languages);
+    this.primaryLanguage$.next(this.currentProject.primaryLanguage);
+
+    // Store to storage
     this.storage.set(STORAGE_PROJECTS, this.projects);
   }
 

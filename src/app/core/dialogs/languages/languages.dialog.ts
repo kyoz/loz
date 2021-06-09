@@ -43,13 +43,13 @@ export class LanguagesDialog implements OnInit, OnDestroy {
     private notify: NotifyService,
   ) {
     if (setting?.currentProject?.languages.length) {
-      this.selectedLanguageList$.next(setting?.currentProject?.languages.map(langId => {
+      this.selectedLanguageList$.next(setting?.languages$.value.map(langId => {
         return locales.find(d => d.id === langId);
       }));
     }
 
     if (setting?.currentProject?.primaryLanguage.length) {
-      this.primaryLanguageId = setting?.currentProject?.primaryLanguage;
+      this.primaryLanguageId = setting?.primaryLanguage$.value;
     }
   }
 

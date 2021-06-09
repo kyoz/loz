@@ -2,7 +2,7 @@
   <div class="key">{{key}}</div>
 
   <table>
-    <tr *ngFor="let lang of setting.currentProject.languages">
+    <tr *ngFor="let lang of setting.languages$ | async">
       <td>{{lang}}</td>
       <td>
         <textarea #textarea
