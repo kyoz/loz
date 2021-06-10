@@ -4,12 +4,14 @@ import * as _ from 'lodash';
 
 // Services
 import { DataService } from './data.service';
+import { SettingService } from './setting.service';
 
 @Injectable({providedIn: 'root'})
 export class LocaleParserService {
 
   constructor(
-    private data: DataService
+    private data: DataService,
+    private setting: SettingService
   ) { }
 
   parseToTree(localeData: Record<string, any>): Locale[] {
@@ -43,7 +45,11 @@ export class LocaleParserService {
 
   parseTreeToJson(language) {
     const tree = this.data.tree$.value;
-    const spaces = 4;
+    let spaces = this.setting.currentProject.indentFormat;
+
+    if (spaces === 'tab') {
+      spaces = '\t';
+    }
 
     return JSON.stringify(this.recursiveParseTreeToObj(tree, language), null, spaces);
   }

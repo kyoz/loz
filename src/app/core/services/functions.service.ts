@@ -129,7 +129,6 @@ export class FunctionsService {
 
     const languages = this.setting.languages$.value;
     const savePath = this.setting.currentProject.path;
-    const results = {};
 
     // Remove locale that not exist in project
     const existFiles = this.electron.fs.readdirSync(savePath);
