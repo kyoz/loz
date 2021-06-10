@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { localeKeys } from '../constants/locales';
+import { BehaviorSubject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import * as moment from 'moment';
 
 // Services
@@ -16,6 +18,8 @@ export class FunctionsService {
 
   localeNameRegex = new RegExp("[a-z]{2,3}(-[a-zA-Z015]{2,4})?(-[A-Z]{2,5})?.json");
 
+  onSaveRequest$ = new BehaviorSubject(undefined);
+
   constructor(
     private electron: ElectronService,
     private data: DataService,
@@ -24,7 +28,20 @@ export class FunctionsService {
     private localeParser: LocaleParserService,
     private notify: NotifyService,
     private setting: SettingService,
-  ) { }
+  ) {
+    this.initListeners();
+  }
+
+  initListeners() {
+    this.onSaveRequest$.pipe(debounceTime(1000), distinctUntilChanged()).subscribe(res => {
+      if (!res || !this.setting.currentProject.autoSave) {
+        return;
+      }
+
+      console.log('save');
+      this.save(true);
+    });
+  }
 
   openI18nFolder(): void {
     this.electron.remote.dialog.showOpenDialog(
@@ -132,6 +149,7 @@ export class FunctionsService {
     }
 
     this.loader.hide();
+    this.notify.pushNotify('Saved', null, 1500);
   }
 
   private isValidI18nFolder(fileNames: string[]): boolean {

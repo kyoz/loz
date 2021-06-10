@@ -62,13 +62,22 @@
   </div>
 
   <div class="right">
-    <div class="button"
-      matRipple
-      matRippleColor="rgba(0,0,0,.12)"
-      (click)="functions.save()"
-    >
-      <img src="../../../../assets/icons/toolbar/save.png" width="24px" height="24px" />
-      <div class="label">Save</div>
-    </div>
+    <ng-template [ngIf]="!(isSaving$ | async)" [ngIfElse]="saving">
+      <div class="button"
+        matRipple
+        matRippleColor="rgba(0,0,0,.12)"
+        style="min-width: 48px; max-width: 48px"
+        (click)="functions.save()"
+      >
+        <img src="../../../../assets/icons/toolbar/save.png" width="24px" height="24px" />
+        <div class="label">Save</div>
+      </div>
+    </ng-template>
+
+    <ng-template #saving>
+      <div style="min-width: 48px; max-width: 48px; display: flex; justify-content: center; align-items: center">
+        <mat-spinner mode="indeterminate" diameter="28" strokeWidth="2" color="primary"></mat-spinner>
+      </div>
+    </ng-template>
   </div>
 </div>

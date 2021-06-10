@@ -7,7 +7,7 @@
       <td>
         <textarea #textarea
           rows="1"
-          (input)="adjustHeight(textarea)"
+          (input)="onInput(textarea)"
           [(ngModel)]="data.dataMap[key][lang]">
         </textarea>
       </td>

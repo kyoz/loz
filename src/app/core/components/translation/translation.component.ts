@@ -12,6 +12,7 @@ import { take } from 'rxjs/operators';
 
 // Services
 import { SettingService } from '../../services/setting.service';
+import { FunctionsService } from '../../services/functions.service';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -27,6 +28,7 @@ export class CoreTranslationComponent implements AfterViewInit {
   constructor(
     public setting: SettingService,
     public data: DataService,
+    private functions: FunctionsService,
     private ngZone: NgZone,
   ) {
   }
@@ -35,15 +37,17 @@ export class CoreTranslationComponent implements AfterViewInit {
     // This should be ngZone but i'v tested and it seem slower than setTimeout 
     // So for now i use setTimeout
     setTimeout(() => {
-      this.textareas.forEach(el => {
-        this.adjustHeight(el.nativeElement);
+      this.textareas.forEach((el: ElementRef) => {
+        el.nativeElement.style.height = 'auto';
+        el.nativeElement.style.height = `${el.nativeElement.scrollHeight}px`;
       });
     });
   }
 
-  adjustHeight(el) {
+  onInput(el) {
     el.style.height = 'auto';
     el.style.height = `${el.scrollHeight}px`;
+    this.functions.onSaveRequest$.next(new Date());
   }
 }
 

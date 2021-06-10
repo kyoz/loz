@@ -1,3 +1,7 @@
-.mat-simple-snackbar {
-  justify-content: center !important;
+snack-bar-container {
+  min-width: 84px !important;
+
+  .mat-simple-snackbar {
+    justify-content: center !important;
+  }
 }
