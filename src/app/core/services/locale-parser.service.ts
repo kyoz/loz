@@ -8,7 +8,9 @@ import { DataService } from './data.service';
 @Injectable({providedIn: 'root'})
 export class LocaleParserService {
 
-  constructor(private data: DataService) { }
+  constructor(
+    private data: DataService
+  ) { }
 
   parseToTree(localeData: Record<string, any>): Locale[] {
     const localeList = Object.keys(localeData);
@@ -37,6 +39,13 @@ export class LocaleParserService {
       _.values(this.recursiveParseMaterialTree(mergedLocaleData)),
       ['key'], ['asc'],
     );
+  }
+
+  parseTreeToJson(language) {
+    const tree = this.data.tree$.value;
+    const spaces = 4;
+
+    return JSON.stringify(this.recursiveParseTreeToObj(tree, language), null, spaces);
   }
   
   private recursiveParseLocale(
@@ -97,6 +106,22 @@ export class LocaleParserService {
     }
 
     return data as Locale[];
+  }
+
+  private recursiveParseTreeToObj(tree, language) {
+    const res = {};
+
+    for (const branch of tree) {
+      res[branch.key] = {};
+
+      if (branch.values.length) {
+        res[branch.key] = this.data.dataMap[branch.path][language];
+      } else {
+        res[branch.key] = this.recursiveParseTreeToObj(branch.children, language);
+      }
+    }
+
+    return res;
   }
 
   private genLocaleData(currentLocale, localeList, value) {

@@ -21,7 +21,7 @@ export class FunctionsService {
     private data: DataService,
     private dialogs: DialogsService,
     private loader: LoaderService,
-    private localParser: LocaleParserService,
+    private localeParser: LocaleParserService,
     private notify: NotifyService,
     private setting: SettingService,
   ) { }
@@ -86,7 +86,7 @@ export class FunctionsService {
 
       // Delay a litle bit to ensure loader is displayed
       setTimeout(() => {
-        this.data.tree$.next(this.localParser.parseToTree(localeMap));
+        this.data.tree$.next(this.localeParser.parseToTree(localeMap));
 
         this.loader.hide();
 
@@ -102,8 +102,33 @@ export class FunctionsService {
     }
   }
 
-  save() {
-    alert('save');
+  save(silent = false) {
+    if (!silent) {
+      this.loader.show();
+    }
+
+    const languages = this.setting.languages$.value;
+    const savePath = this.setting.currentProject.path;
+    const results = {};
+
+    // Remove locale that not exist in project
+    const existFiles = this.electron.fs.readdirSync(savePath);
+
+    for (const existFile of existFiles) {
+      if (!languages.includes(existFile.replace('.json', ''))) {
+        this.electron.fs.rmSync(`${savePath}/${existFile}`, {
+          force: true,
+        });
+      }
+    }
+
+    // Parse and save file
+    for (const language of languages) {
+      const json = this.localeParser.parseTreeToJson(language);
+      this.electron.fs.writeFileSync(`${savePath}/${language}.json`, json);
+    }
+
+    this.loader.hide();
   }
 
   private isValidI18nFolder(fileNames: string[]): boolean {
