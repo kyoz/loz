@@ -134,7 +134,7 @@ export class LanguagesDialog implements OnInit, OnDestroy {
     // Store setting to storage
     this.setting.currentProject.languages = this.selectedLanguageList$.value.map(d => d.id);
     this.setting.currentProject.primaryLanguage = this.primaryLanguageId;
-    this.setting.saveProject(this.setting.currentProject);
+    this.setting.saveCurrentProject();
 
     this.close();
   }

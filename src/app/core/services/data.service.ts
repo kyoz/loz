@@ -42,4 +42,10 @@ export class DataService {
 
     return results;
   }
+
+  reset() {
+    this.currentNode$.next(undefined);
+    this.currentKeys$.next(undefined);
+    this.dataMap = {};
+  }
 }

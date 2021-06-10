@@ -5,10 +5,12 @@ import { MaterialComponentsModule } from '../modules/material.module';
 // Dialogs 
 import { LanguagesDialog } from './languages/languages.dialog';
 import { LatestProjectsDialog } from './latest-projects/latest-projects.dialog';
+import { ConfigDialog } from './config/config.dialog';
 
 const DIALOGS = [
   LanguagesDialog,
   LatestProjectsDialog,
+  ConfigDialog,
 ];
 
 @NgModule({

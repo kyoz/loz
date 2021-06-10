@@ -59,6 +59,9 @@ export class FunctionsService {
       return;
     }
 
+    // It's a valid i18n folder, let reset current project rendering items
+    this.data.reset();
+
     const localeMap = [];
 
     try {

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 // Dialogs
 import { LanguagesDialog } from '../dialogs/languages/languages.dialog';
 import { LatestProjectsDialog } from '../dialogs/latest-projects/latest-projects.dialog';
+import { ConfigDialog } from '../dialogs/config/config.dialog';
 
 @Injectable({providedIn: 'root'})
 export class DialogsService {
@@ -28,6 +29,16 @@ export class DialogsService {
       disableClose: true,
       width: '980px',
       height: '720px',
+      maxWidth: '94vw',
+      maxHeight: '94vh',
+    });
+  }
+
+  openConfiguration(): void {
+    this.matDialog.open(ConfigDialog, {
+      autoFocus: false,
+      width: '580px',
+      height: '480px',
       maxWidth: '94vw',
       maxHeight: '94vh',
     });

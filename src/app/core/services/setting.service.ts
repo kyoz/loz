@@ -41,7 +41,24 @@ export class SettingService {
         existedProject.primaryLanguage = project.primaryLanguage;
       }
 
+      if (project.indentFormat !== undefined && project.indentFormat !== undefined) {
+        existedProject.indentFormat = project.indentFormat;
+      } else {
+        if (existedProject.indentFormat === undefined) {
+          existedProject.indentFormat = '  ';
+        }
+      }
+
+      if (project.autoSave !== undefined && project.autoSave !== undefined) {
+        existedProject.autoSave = project.autoSave;
+      } else {
+        if (existedProject.autoSave === undefined) {
+          existedProject.autoSave = true;
+        }
+      }
+
       existedProject.lastModified = moment().unix();
+
       this.currentProject = _.cloneDeep(existedProject);
     } else {
 
@@ -56,6 +73,10 @@ export class SettingService {
 
     // Store to storage
     this.storage.set(STORAGE_PROJECTS, this.projects);
+  }
+
+  saveCurrentProject() {
+    this.saveProject(this.currentProject);
   }
 
   removeProject(path: string) {

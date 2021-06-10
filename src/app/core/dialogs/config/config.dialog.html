@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="header">
+    <div class="title">Configuration</div>
+  </div>
+
+  <div class="content">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Theme</mat-label>
+      <mat-select placeholder="Theme" (selectionChange)="onThemeChange($event)">
+        <mat-option value="light">Light</mat-option>
+        <mat-option value="dark">Dark</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <ng-template [ngIf]="setting.currentProject">
+      <mat-form-field appearance="outline" floatLabel="always">
+        <mat-label>Save indent format</mat-label>
+        <mat-select placeholder="Save format"
+          [value]="setting.currentProject.indentFormat"
+          (selectionChange)="onIndentFormatChange($event)">
+          <mat-option value="">Minify (No space)</mat-option>
+          <mat-option value="  ">2 space</mat-option>
+          <mat-option value="    ">4 space</mat-option>
+          <mat-option value="\t">Tab</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-checkbox
+        [checked]="setting.currentProject.autoSave"
+        (change)="onAutoSaveSettingChange($event)">
+        Auto Save
+      </mat-checkbox>
+    </ng-template>
+  </div>
+
+  <div class="footer">
+    <button mat-button style="margin-right: 8px" (click)="close()">
+      Cancel
+    </button>
+
+    <button mat-raised-button color="primary">
+      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <path fill="#fff" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
+      </svg>
+
+      Done
+    </button>
+  </div>
+</div>
