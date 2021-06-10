@@ -10,7 +10,7 @@
       <div class="background"></div>
 
       <div class="icon">
-        <img width="auto" height="28px" 
+        <img width="auto" height="28px" draggable="false" 
           src="../../../../assets/icons/tree/note.png" />
       </div>
 
@@ -28,7 +28,7 @@
         <div class="expander" matTreeNodeToggle
             [class.opened]="treeControl.isExpanded(node)"
         >
-          <img width="auto" height="14px"
+          <img width="auto" height="14px" draggable="false"
             src="../../../../assets/icons/tree/arrow_right.png" />
         </div>
         
@@ -36,7 +36,7 @@
           (click)="onNodeClick(node)"
           (dblclick)="onNodeDoubleClick(node)"
         >
-          <img width="auto" height="28px" 
+          <img width="auto" height="28px" draggable="false" 
             src="../../../../assets/icons/tree/folder.png" />
         </div>
 
