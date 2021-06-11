@@ -68,6 +68,24 @@
         }
       }
     }
+
+    .no-projects {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+
+      .title {
+        font-size: 1.8em;
+        color: rgba(0,0,0,.32);
+        padding-bottom: 8px;
+      }
+
+      .description {
+        color: rgba(0,0,0,.32);
+      }
+    }
   }
 
   .footer {
