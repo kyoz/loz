@@ -121,7 +121,7 @@ export class LocaleParserService {
       res[branch.key] = {};
 
       if (branch.values.length) {
-        res[branch.key] = this.data.dataMap[branch.path][language];
+        res[branch.key] = this.data.dataMap[branch.path][language] || '';
       } else {
         res[branch.key] = this.recursiveParseTreeToObj(branch.children, language);
       }
