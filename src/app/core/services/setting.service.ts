@@ -27,6 +27,7 @@ export class SettingService {
   initListeners() {
     this.projects.currentProject$.subscribe((currentProject: Project) => {
       if (currentProject === undefined) {
+        this.reset();
         return;
       }
 
@@ -35,5 +36,12 @@ export class SettingService {
       this.autoSave$.next(currentProject.autoSave);
       this.indentFormat$.next(currentProject.indentFormat);
     });
+  }
+
+  reset() {
+    this.primaryLanguage$.next('');
+    this.languages$.next([]);
+    this.autoSave$.next(false);
+    this.indentFormat$.next('  ');
   }
 }

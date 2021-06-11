@@ -42,12 +42,20 @@ export class LatestProjectsDialog {
     this.functions.openI18nFolder();
   }
 
+  removeProject(project, e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.projectList$.next(this.projectList$.value.filter(d => d.path !== project.path));
+    this.projects.removeProject(project.path);
+  }
+
   truncatePath(path) {
-    if (path.length <= 70) {
+    if (path.length <= 64) {
       return path;
     }
 
-    return `...${path.slice(path.length - 70, path.length)}`;
+    return `...${path.slice(path.length - 64, path.length)}`;
   }
 
   close() {
