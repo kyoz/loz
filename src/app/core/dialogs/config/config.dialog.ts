@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import * as _ from 'lodash';
 
 // Services
+import { ProjectsService } from '../../services/projects.service';
 import { SettingService } from '../../services/setting.service';
 
 @Component({
@@ -12,16 +13,11 @@ import { SettingService } from '../../services/setting.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConfigDialog {
-  projects = [];
-
   constructor(
     private dialogRef: MatDialogRef<ConfigDialog>,
+    public projects: ProjectsService,
     public setting: SettingService,
   ) {
-  }
-
-  ngOnInit() {
-    console.log(this.setting.currentProject)
   }
 
   onThemeChange(e) {
@@ -29,13 +25,13 @@ export class ConfigDialog {
   }
 
   onIndentFormatChange(e) {
-    this.setting.currentProject.indentFormat = e.value;
-    this.setting.saveCurrentProject();
+    this.projects.currentProject$.value.indentFormat = e.value;
+    this.projects.saveCurrentProject();
   }
 
   onAutoSaveSettingChange(e) {
-    this.setting.currentProject.autoSave = e.checked;
-    this.setting.saveCurrentProject();
+    this.projects.currentProject$.value.autoSave = e.checked;
+    this.projects.saveCurrentProject();
   }
 
   close() {

@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 
 // Services
 import { FunctionsService } from '../../services/functions.service';
-import { SettingService } from '../../services/setting.service';
+import { ProjectsService } from '../../services/projects.service';
 
 @Component({
   selector: 'latest-projects-dialog',
@@ -13,17 +13,17 @@ import { SettingService } from '../../services/setting.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LatestProjectsDialog {
-  projects = [];
+  projectList = [];
 
   constructor(
     private dialogRef: MatDialogRef<LatestProjectsDialog>,
     private functions: FunctionsService,
-    private setting: SettingService,
+    private projects: ProjectsService,
   ) {
   }
 
   ngOnInit() {
-    this.projects = _.cloneDeep(this.setting.projects).map(project => {
+    this.projectList = _.cloneDeep(this.projects.projectList).map((project: any) => {
       project.displayPath = this.truncatePath(project.path + project.path + project.path);
       project.displayLanguage = project.languages.join(', ');
 

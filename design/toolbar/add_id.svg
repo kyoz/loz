@@ -13,7 +13,7 @@
    id="svg945"
    sodipodi:docname="add_id.svg"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
-   inkscape:export-filename="/home/kyoz/Documents/Github/loz/src/assets/icons/toolbar/language.png"
+   inkscape:export-filename="/home/kyoz/Documents/Github/loz/src/assets/icons/toolbar/add_id.png"
    inkscape:export-xdpi="256"
    inkscape:export-ydpi="256">
   <metadata
@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -56,15 +56,22 @@
      inkscape:snap-center="true"
      inkscape:snap-text-baseline="true"
      inkscape:snap-page="true"
-     inkscape:zoom="4.3958333"
-     inkscape:cx="-55.162884"
-     inkscape:cy="5.7650719"
+     inkscape:zoom="8.7916666"
+     inkscape:cx="-29.24744"
+     inkscape:cy="9.4177401"
      inkscape:window-x="8"
      inkscape:window-y="29"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg945"
      inkscape:document-rotation="0"
      inkscape:snap-global="true" />
+  <rect
+     style="fill:#ffffff;stroke:none;stroke-width:11.4928"
+     id="rect953"
+     width="19.503292"
+     height="14.081506"
+     x="0.77825046"
+     y="3.2318225" />
   <g
      id="g2192"
      transform="matrix(0.89282107,0,0,0.89282107,0.45007161,2.6713899)">

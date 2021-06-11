@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ElectronService } from './core/services/electron.service';
 import { DialogsService } from './core/services/dialogs.service';
 import { LoaderService } from './core/services/loader.service';
+import { ProjectsService } from './core/services/projects.service';
 import { SettingService } from './core/services/setting.service';
 import { TranslateService } from './core/services/translate.service';
 
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
     private loader: LoaderService,
     private setting: SettingService,
     private translate: TranslateService,
+    private projects: ProjectsService,
   ) {
     if (electronService.isElectron) {
       console.log(process.env);
@@ -31,11 +33,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.projects.init();
     this.setting.init();
     this.translate.init();
     this.loader.init();
 
-    if (this.setting.projects.length) {
+    if (this.projects.projectList.length) {
       this.dialogs.openLatestProjects();
     }
   }

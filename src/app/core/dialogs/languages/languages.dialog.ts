@@ -16,6 +16,7 @@ import * as moment from 'moment';
 
 // Services
 import { NotifyService } from '../../services/notify.service';
+import { ProjectsService } from '../../services/projects.service';
 import { SettingService } from '../../services/setting.service';
 
 @Component({
@@ -39,17 +40,18 @@ export class LanguagesDialog implements OnInit, OnDestroy {
 
   constructor(
     private dialogRef: MatDialogRef<LanguagesDialog>,
+    private projects: ProjectsService,
     private setting: SettingService,
     private notify: NotifyService,
   ) {
-    if (setting?.currentProject?.languages.length) {
-      this.selectedLanguageList$.next(setting?.languages$.value.map(langId => {
+    if (this.setting.languages$.value.length) {
+      this.selectedLanguageList$.next(this.setting.languages$.value.map(langId => {
         return locales.find(d => d.id === langId);
       }));
     }
 
-    if (setting?.currentProject?.primaryLanguage.length) {
-      this.primaryLanguageId = setting?.primaryLanguage$.value;
+    if (this.setting.primaryLanguage$.value.length) {
+      this.primaryLanguageId = this.setting.primaryLanguage$.value;
     }
   }
 
@@ -132,9 +134,9 @@ export class LanguagesDialog implements OnInit, OnDestroy {
     }
 
     // Store setting to storage
-    this.setting.currentProject.languages = this.selectedLanguageList$.value.map(d => d.id);
-    this.setting.currentProject.primaryLanguage = this.primaryLanguageId;
-    this.setting.saveCurrentProject();
+    this.projects.currentProject$.value.languages = this.selectedLanguageList$.value.map(d => d.id);
+    this.projects.currentProject$.value.primaryLanguage = this.primaryLanguageId;
+    this.projects.saveCurrentProject();
 
     this.close();
   }

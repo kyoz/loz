@@ -45,7 +45,7 @@ export class LocaleParserService {
 
   parseTreeToJson(language) {
     const tree = this.data.tree$.value;
-    let spaces = this.setting.currentProject.indentFormat;
+    let spaces = this.setting.indentFormat$.value;
 
     if (spaces === 'tab') {
       spaces = '\t';

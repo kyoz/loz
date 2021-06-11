@@ -5,6 +5,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 // Services
 import { FunctionsService } from '../../services/functions.service';
 import { DialogsService } from '../../services/dialogs.service';
+import { ProjectsService } from '../../services/projects.service';
 import { SettingService } from '../../services/setting.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class CoreToolbarComponent {
   constructor(
     public functions: FunctionsService,
     public dialogs: DialogsService,
+    public projects: ProjectsService,
     private setting: SettingService,
   ) {
     // This is just an atempt to show a spinner and let user know that loz is 
@@ -26,7 +28,7 @@ export class CoreToolbarComponent {
     this.functions.onSaveRequest$
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe(res => {
-        if (!res || !this.setting.currentProject.autoSave) {
+        if (!res || !this.setting.autoSave$.value) {
           return;
         }
 

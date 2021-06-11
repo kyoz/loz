@@ -12,11 +12,11 @@
       </mat-select>
     </mat-form-field>
 
-    <ng-template [ngIf]="setting.currentProject">
+    <ng-template [ngIf]="projects.currentProject$ | async">
       <mat-form-field appearance="outline" floatLabel="always">
         <mat-label>Save indent format</mat-label>
         <mat-select placeholder="Save format"
-          [value]="setting.currentProject.indentFormat"
+          [value]="setting.indentFormat$ | async"
           (selectionChange)="onIndentFormatChange($event)">
           <mat-option value="">Minify (No space)</mat-option>
           <mat-option value="  ">2 space</mat-option>
@@ -26,7 +26,7 @@
       </mat-form-field>
 
       <mat-checkbox
-        [checked]="setting.currentProject.autoSave"
+        [checked]="setting.autoSave$ | async"
         (change)="onAutoSaveSettingChange($event)">
         Auto Save
       </mat-checkbox>

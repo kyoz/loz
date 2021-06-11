@@ -14,6 +14,7 @@
     <button class="button"
       matRipple
       matRippleColor="rgba(0,0,0,.12)"
+      [disabled]="!projects.currentProject$ | async"
       (click)="dialogs.openLanguagesConfig()"
     >
       <img src="../../../../assets/icons/toolbar/add_id.png" width="24px" height="24px" draggable="false" />

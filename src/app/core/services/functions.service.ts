@@ -12,6 +12,7 @@ import { LoaderService } from './loader.service';
 import { LocaleParserService } from './locale-parser.service';
 import { NotifyService } from './notify.service';
 import { SettingService } from './setting.service';
+import { ProjectsService } from './projects.service';
 
 @Injectable({providedIn: 'root'})
 export class FunctionsService {
@@ -27,6 +28,7 @@ export class FunctionsService {
     private loader: LoaderService,
     private localeParser: LocaleParserService,
     private notify: NotifyService,
+    private projects: ProjectsService,
     private setting: SettingService,
   ) {
     this.initListeners();
@@ -34,7 +36,7 @@ export class FunctionsService {
 
   initListeners() {
     this.onSaveRequest$.pipe(debounceTime(1000), distinctUntilChanged()).subscribe(res => {
-      if (!res || !this.setting.currentProject.autoSave) {
+      if (!res || !this.setting.autoSave$.value) {
         return;
       }
 
@@ -71,7 +73,7 @@ export class FunctionsService {
     }
 
     if (!this.isValidI18nFolder(fileNames)) {
-      this.setting.removeProject(folderPath);
+      this.projects.removeProject(folderPath);
       this.notify.pushNotify('Not valid i18n folder');
       return;
     }
@@ -94,7 +96,7 @@ export class FunctionsService {
       }
 
       // Save project to storage for fast open next time
-      this.setting.saveProject({
+      this.projects.saveProject({
         path: folderPath,
         languages: Object.keys(localeMap) || [],
         primaryLanguage: '',
@@ -111,8 +113,8 @@ export class FunctionsService {
         this.loader.hide();
 
         // Check to ensure language & primary language is configurated
-        if (!this.setting?.currentProject?.languages.length ||
-            !this.setting?.currentProject?.primaryLanguage) {
+        if (!this.projects.currentProject$.value?.languages.length ||
+            !this.projects.currentProject$.value?.primaryLanguage) {
 
           this.dialogs.openLanguagesConfig();
         }
@@ -128,7 +130,7 @@ export class FunctionsService {
     }
 
     const languages = this.setting.languages$.value;
-    const savePath = this.setting.currentProject.path;
+    const savePath = this.projects.currentProject$.value?.path;
 
     // Remove locale that not exist in project
     const existFiles = this.electron.fs.readdirSync(savePath);
