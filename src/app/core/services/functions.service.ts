@@ -64,7 +64,7 @@ export class FunctionsService {
     });
   }
 
-  processI18nFolder(folderPath: string): void {
+  processI18nFolder(folderPath: string, primaryLanguage = ''): void {
     const fileNames = this.electron.fs.readdirSync(folderPath);
 
     if (!fileNames || fileNames.length === 0) {
@@ -99,7 +99,7 @@ export class FunctionsService {
       this.projects.saveProject({
         path: folderPath,
         languages: Object.keys(localeMap) || [],
-        primaryLanguage: '',
+        primaryLanguage,
         lastModified: moment().unix(),
       });
 

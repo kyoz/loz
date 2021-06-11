@@ -74,7 +74,8 @@ export class ProjectsService {
   }
 
   removeProject(path: string) {
-    this.storage.set(STORAGE_PROJECTS, this.projectList.filter(d => d.path !== path));
+    this.projectList = this.projectList.filter(d => d.path !== path);
+    this.storage.set(STORAGE_PROJECTS, this.projectList);
 
     if (path === this.currentProject$.value.path) {
       this.currentProject$.next(undefined);

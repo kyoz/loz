@@ -43,7 +43,7 @@
         background: rgba(0,0,0,.04);
 
         .remove-btn {
-          display: flex;
+          opacity: 1;
         }
       }
 
@@ -81,7 +81,7 @@
         min-width: 68px;
         max-width: 68px;
         cursor: pointer;
-        display: none;
+        opacity: 0;
 
         &:hover {
           background: rgba(0,0,0,.12);
