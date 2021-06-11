@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 // Services
-import { ElectronService } from './core/services/electron.service';
+import { AppStateService } from './core/services/app-state.service';
 import { DialogsService } from './core/services/dialogs.service';
+import { ElectronService } from './core/services/electron.service';
 import { LoaderService } from './core/services/loader.service';
 import { ProjectsService } from './core/services/projects.service';
 import { SettingService } from './core/services/setting.service';
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   constructor(
     public projects: ProjectsService,
     public dialogs: DialogsService,
+    private appState: AppStateService,
     private electron: ElectronService,
     private loader: LoaderService,
     private setting: SettingService,
@@ -38,8 +40,27 @@ export class AppComponent implements OnInit {
     this.translate.init();
     this.loader.init();
 
+    this.initListeners();
+
     if (this.projects.projectList.length) {
       this.dialogs.openLatestProjects();
+    }
+  }
+
+  ngAfterContentInit() {
+    this.initListeners();
+  }
+
+  initListeners() {
+    const cdkOverlayContainerEls = document.getElementsByClassName('cdk-overlay-container');
+    const appState = this.appState;
+
+    if (cdkOverlayContainerEls && cdkOverlayContainerEls[0]) {
+      cdkOverlayContainerEls[0].addEventListener('contextmenu', function(ev) {
+          ev.preventDefault();
+          appState.onCdkOverlayRightClick$.next();
+          return false;
+      }, false);
     }
   }
 
