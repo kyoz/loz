@@ -64,7 +64,10 @@
   </div> 
 
   <mat-menu #contextMenu="matMenu">
-    <button mat-menu-item style="display: flex; justify-content: flex-start; align-items: center">
+    <button mat-menu-item
+      style="display: flex; justify-content: flex-start; align-items: center"
+      (click)="dialogs.openTranslationAdd()">
+
       <img src="../../../../assets/icons/toolbar/add_id.png"
            width="24px" height="24px"
            style="margin-right: 8px" />

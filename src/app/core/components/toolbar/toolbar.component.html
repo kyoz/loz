@@ -32,7 +32,7 @@
       matRipple
       matRippleColor="rgba(0,0,0,.12)"
       [disabled]="!(projects.currentProject$ | async)"
-      (click)="dialogs.openLanguagesConfig()"
+      (click)="dialogs.openTranslationAdd()"
     >
       <img src="../../../../assets/icons/toolbar/add_id.png"
            width="24px"
@@ -46,7 +46,7 @@
       matRipple
       matRippleColor="rgba(0,0,0,.12)"
       [disabled]="!(projects.currentProject$ | async)"
-      (click)="dialogs.openLanguagesConfig()"
+      (click)="dialogs.openTranslationRemove()"
     >
       <img src="../../../../assets/icons/toolbar/remove_id.png"
            width="24px"

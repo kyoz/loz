@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="header">
+    <div class="title">Create new translation</div>
+  </div>
+
+  <div class="content">
+    <mat-form-field appearance="outline">
+      <mat-label>Translation ID</mat-label>
+
+      <input matInput placeholder="Translation ID" [(ngModel)]="translationId">
+
+      <mat-hint align="end">
+        Should be something like: <b>GENERAL.TEXT.HELLO</b>
+      </mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="footer">
+    <button mat-button style="margin-right: 8px" (click)="close()">
+      Cancel
+    </button>
+
+    <button mat-raised-button color="primary" (click)="create()">
+      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+        <path fill="#fff" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+      </svg>
+
+      Create
+    </button>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { Locale } from '../../interfaces/locale';
 // Services
 import { AppStateService } from '../../services/app-state.service';
 import { DataService } from '../../services/data.service';
+import { DialogsService } from '../../services/dialogs.service';
 
 @Component({
   selector: 'core-tree',
@@ -27,6 +28,7 @@ export class CoreTreeComponent implements OnInit {
   constructor(
     private appState: AppStateService,
     private data: DataService,
+    public dialogs: DialogsService,
   ) {
     this.dataSource.data = [];
   }

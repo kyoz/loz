@@ -6,6 +6,7 @@ import { ConfigDialog } from '../dialogs/config/config.dialog';
 import { CreateProjectDialog } from '../dialogs/create-project/create-project.dialog';
 import { LanguagesDialog } from '../dialogs/languages/languages.dialog';
 import { LatestProjectsDialog } from '../dialogs/latest-projects/latest-projects.dialog';
+import { TranslationAddDialog } from '../dialogs/translation-add/translation-add.dialog';
 
 @Injectable({providedIn: 'root'})
 export class DialogsService {
@@ -53,5 +54,19 @@ export class DialogsService {
       maxWidth: '94vw',
       maxHeight: '94vh',
     });
+  }
+
+  openTranslationAdd(): void {
+    this.matDialog.open(TranslationAddDialog, {
+      autoFocus: true,
+      width: '580px',
+      height: '264px',
+      maxWidth: '94vw',
+      maxHeight: '94vh',
+    });
+  }
+
+  openTranslationRemove(): void {
+
   }
 }
