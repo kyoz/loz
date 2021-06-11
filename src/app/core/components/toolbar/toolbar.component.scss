@@ -32,11 +32,16 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    margin: 0;
     padding: 0 8px 2px 8px;
     border-radius: 4px;
     min-height: calc(100% - 8px);
     max-height: calc(100% - 8px);
+    background: transparent;
+    border: none;
     box-sizing: border-box;
+    box-shadow: none;
+    outline: none;
     user-select: none;
     cursor: pointer;
 
@@ -45,7 +50,7 @@
     }
 
     .label {
-      font-size: .72em;
+      font-size: .88em;
       color: rgba(0,0,0,.48);
       min-height: 16px;
       max-height: 16px;

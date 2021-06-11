@@ -1,69 +1,69 @@
 <div class="container">
   <div class="left">
-    <div class="button"
+    <button class="button"
       matRipple
       matRippleColor="rgba(0,0,0,.12)"
       (click)="dialogs.openLatestProjects()"
     >
       <img src="../../../../assets/icons/toolbar/folder.png" width="24px" height="24px" draggable="false" />
       <div class="label">Open</div>
-    </div>
+    </button>
   </div>
 
   <div class="center">
-    <div class="button"
+    <button class="button"
       matRipple
       matRippleColor="rgba(0,0,0,.12)"
       (click)="dialogs.openLanguagesConfig()"
     >
       <img src="../../../../assets/icons/toolbar/add_id.png" width="24px" height="24px" draggable="false" />
       <div class="label">Add ID</div>
-    </div>
+    </button>
 
-    <div class="button"
+    <button class="button"
       matRipple
       matRippleColor="rgba(0,0,0,.12)"
       (click)="dialogs.openLanguagesConfig()"
     >
       <img src="../../../../assets/icons/toolbar/remove_id.png" width="24px" height="24px" draggable="false" />
       <div class="label">Remove ID</div>
-    </div>
+    </button>
 
     <div class="spacer"></div>
 
-    <div class="button"
+    <button class="button"
       matRipple
       matRippleColor="rgba(0,0,0,.12)"
       (click)="dialogs.openLanguagesConfig()"
     >
       <img src="../../../../assets/icons/toolbar/language.png" width="24px" height="24px" draggable="false" />
       <div class="label">Languages</div>
-    </div>
+    </button>
 
-    <div class="button"
+    <button class="button"
       matRipple
       matRippleColor="rgba(0,0,0,.12)"
       (click)="dialogs.openConfiguration()"
     >
       <img src="../../../../assets/icons/toolbar/config.png" width="24px" height="24px" draggable="false" />
       <div class="label">Config</div>
-    </div>
+    </button>
 
     <div class="spacer"></div>
 
-    <div class="button"
+    <button class="button"
       matRipple
       matRippleColor="rgba(0,0,0,.12)"
       (click)="dialogs.openLanguagesConfig()"
     >
       <img src="../../../../assets/icons/toolbar/donate.png" width="24px" height="24px" draggable="false" />
       <div class="label">Donate</div>
-    </div>
+    </button>
   </div>
 
   <div class="right">
     <ng-template [ngIf]="!(isSaving$ | async)" [ngIfElse]="saving">
-      <div class="button"
+      <button class="button"
         matRipple
         matRippleColor="rgba(0,0,0,.12)"
         style="min-width: 48px; max-width: 48px"
@@ -71,7 +71,7 @@
       >
         <img src="../../../../assets/icons/toolbar/save.png" width="24px" height="24px" draggable="false" />
         <div class="label">Save</div>
-      </div>
+      </button>
     </ng-template>
 
     <ng-template #saving>
