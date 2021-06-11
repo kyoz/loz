@@ -18,6 +18,36 @@
   .body {
     width: 100%;
     flex: 1;
+
+    .none {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .title {
+      font-size: 1.6em;
+      color: rgba(0,0,0,.24);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 24px 0;
+    }
+
+    .user-guide {
+      color: var(--color-primary);
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .loader-wrapper {

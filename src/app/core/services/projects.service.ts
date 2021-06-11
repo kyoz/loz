@@ -64,6 +64,9 @@ export class ProjectsService {
 
     // Store to storage
     this.storage.set(STORAGE_PROJECTS, this.projectList);
+
+    // Re init to sort project
+    this.init();
   }
 
   saveCurrentProject() {

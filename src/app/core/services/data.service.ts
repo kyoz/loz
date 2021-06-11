@@ -3,6 +3,9 @@ import { BehaviorSubject } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Locale } from '../interfaces';
 
+// Services
+import { ProjectsService } from './projects.service';
+
 @Injectable({providedIn: 'root'})
 export class DataService {
 
@@ -13,8 +16,11 @@ export class DataService {
 
   dataMap = {};
 
-  constructor() {
+  constructor(
+    private projects: ProjectsService,
+  ) {
     this.init();
+    this.initListeners();
   }
 
   init() {
@@ -24,6 +30,14 @@ export class DataService {
       }
 
       this.currentKeys$.next(this.recursiveParseKeys(currentNode));
+    });
+  }
+
+  initListeners() {
+    this.projects.currentProject$.subscribe(currentProject => {
+      if (!currentProject) {
+        this.reset();
+      }
     });
   }
 
@@ -44,6 +58,7 @@ export class DataService {
   }
 
   reset() {
+    this.tree$.next([]);
     this.currentNode$.next(undefined);
     this.currentKeys$.next(undefined);
     this.dataMap = {};

@@ -15,18 +15,18 @@ import { TranslateService } from './core/services/translate.service';
 })
 export class AppComponent implements OnInit {
   constructor(
-    private electronService: ElectronService,
-    private dialogs: DialogsService,
+    public projects: ProjectsService,
+    public dialogs: DialogsService,
+    private electron: ElectronService,
     private loader: LoaderService,
     private setting: SettingService,
     private translate: TranslateService,
-    private projects: ProjectsService,
   ) {
-    if (electronService.isElectron) {
+    if (electron.isElectron) {
       console.log(process.env);
       console.log('Run in electron');
-      console.log('Electron ipcRenderer', this.electronService.ipcRenderer);
-      console.log('NodeJS childProcess', this.electronService.childProcess);
+      console.log('Electron ipcRenderer', this.electron.ipcRenderer);
+      console.log('NodeJS childProcess', this.electron.childProcess);
     } else {
       console.log('Run in browser');
     }
@@ -41,5 +41,9 @@ export class AppComponent implements OnInit {
     if (this.projects.projectList.length) {
       this.dialogs.openLatestProjects();
     }
+  }
+
+  openUserGuide() {
+    this.electron.shell.openExternal('https://github.com/kyoz/loz');
   }
 }

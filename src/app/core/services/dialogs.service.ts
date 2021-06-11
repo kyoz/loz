@@ -13,6 +13,10 @@ export class DialogsService {
     private matDialog: MatDialog,
   ) { }
 
+  openCreateNewProject(): void {
+
+  }
+
   openLatestProjects(): void {
     this.matDialog.open(LatestProjectsDialog, {
       autoFocus: false,
