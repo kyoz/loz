@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy, OnInit, ViewChild } from '@angular/core';
-import { NestedTreeControl, CdkNestedTreeNode } from '@angular/cdk/tree';
+import { Component, ChangeDetectionStrategy, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Locale } from '../../interfaces/locale';
@@ -17,7 +17,7 @@ import { DialogsService } from '../../services/dialogs.service';
 export class CoreTreeComponent implements OnInit {
   @ViewChild(MatMenuTrigger, {static: true}) matMenuTrigger: MatMenuTrigger; 
 
-  treeControl = new NestedTreeControl<Locale>(node => node.children);
+  treeControl = new NestedTreeControl<Locale>(node => node?.children);
   dataSource = new MatTreeNestedDataSource<Locale>();
 
   menuPosition = {
@@ -26,9 +26,10 @@ export class CoreTreeComponent implements OnInit {
   };
 
   constructor(
-    private appState: AppStateService,
-    private data: DataService,
+    public data: DataService,
     public dialogs: DialogsService,
+    private appState: AppStateService,
+    private cd: ChangeDetectorRef,
   ) {
     this.dataSource.data = [];
   }
@@ -38,10 +39,27 @@ export class CoreTreeComponent implements OnInit {
   }
 
   initListeners() {
+    // Update tree data
     this.data.tree$.subscribe(tree => {
+      // TODO: https://github.com/angular/components/issues/11381
+      this.dataSource.data = null;
       this.dataSource.data = tree;
+
+      // TODO: https://github.com/angular/components/issues/12469
+      this.treeControl.dataNodes = tree;
     });
 
+
+    // Expand node on request
+    this.data.expandNodeRequest$.subscribe((expandNode: Locale) => {
+      if (expandNode) {
+        this.treeControl.expandDescendants(this.data.currentNode$.value);
+        this.data.currentNode$.next(expandNode);
+      }
+    });
+
+    
+    // Right click detect when open menu context
     this.appState.onCdkOverlayRightClick$.subscribe(() => {
       this.matMenuTrigger.closeMenu();
     })
@@ -54,7 +72,6 @@ export class CoreTreeComponent implements OnInit {
   }
 
   onNodeRightClick(event: MouseEvent, node) {
-    console.log(node);
     event.preventDefault(); 
 
     // Also select this node

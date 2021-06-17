@@ -7,10 +7,25 @@
     <mat-form-field appearance="outline">
       <mat-label>Translation ID</mat-label>
 
-      <input matInput placeholder="Translation ID" [(ngModel)]="translationId">
+      <input matInput #input
+        placeholder="Translation ID"
+        (input)="onTranslationIdChange$.next(input.value)"
+        (keyup.enter)="create()"
+        [(ngModel)]="translationId"
+      >
 
-      <mat-hint align="end">
-        Should be something like: <b>GENERAL.TEXT.HELLO</b>
+      <mat-hint align=end [ngSwitch]="isValid$ | async">
+        <span *ngSwitchCase="undefined">
+          Should be something like: <b>GENERAL.TEXT.HELLO</b>
+        </span>
+
+        <span style="color: #43A047" *ngSwitchCase="true">
+          Valid translation ID
+        </span>
+
+        <span style="color: #FF3D00" *ngSwitchDefault>
+          Not valid translation ID. Please change it
+        </span>
       </mat-hint>
     </mat-form-field>
   </div>
@@ -20,7 +35,10 @@
       Cancel
     </button>
 
-    <button mat-raised-button color="primary" (click)="create()">
+    <button mat-raised-button color="primary"
+      [disabled]="!(isValid$ | async)"
+      (click)="create()">
+
       <svg style="width:24px;height:24px" viewBox="0 0 24 24">
         <path fill="#fff" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
       </svg>

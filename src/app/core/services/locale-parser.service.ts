@@ -37,6 +37,8 @@ export class LocaleParserService {
 
     // Now parse to material tree data and also gen data map
     this.data.dataMap = {};
+    this.data.pathMap = {};
+
     return _.orderBy(
       _.values(this.recursiveParseMaterialTree(mergedLocaleData)),
       ['key'], ['asc'],
@@ -81,6 +83,9 @@ export class LocaleParserService {
   ): Locale[] {
     for (const key in data) {
       const path = parentPath ? `${parentPath}.${key}` : key;
+
+      // Map global data
+      this.data.pathMap[path] = true;
 
       if (Array.isArray(data[key])) {
         data[key] = {

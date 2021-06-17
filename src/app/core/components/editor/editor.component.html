@@ -2,4 +2,9 @@
   <div *ngFor="let key of data.currentKeys$ | async">
     <core-translation [key]="key"></core-translation>
   </div>
+
+  <div class="none" *ngIf="!(data.currentNode$ | async)">
+    <div class="label">NO TRANSLATION SELECTED</div>
+    <div class="description">Select one to start editing</div>
+  </div>
 </div>
