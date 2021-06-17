@@ -9,6 +9,7 @@ import { CreateProjectDialog } from './create-project/create-project.dialog';
 import { LanguagesDialog } from './languages/languages.dialog';
 import { LatestProjectsDialog } from './latest-projects/latest-projects.dialog';
 import { TranslationAddDialog } from './translation-add/translation-add.dialog';
+import { ConfirmDialog } from './confirm/confirm.dialog';
 
 const DIALOGS = [
   ConfigDialog,
@@ -16,6 +17,7 @@ const DIALOGS = [
   LanguagesDialog,
   LatestProjectsDialog,
   TranslationAddDialog,
+  ConfirmDialog,
 ];
 
 @NgModule({

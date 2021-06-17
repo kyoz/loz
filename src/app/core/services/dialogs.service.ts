@@ -7,6 +7,8 @@ import { CreateProjectDialog } from '../dialogs/create-project/create-project.di
 import { LanguagesDialog } from '../dialogs/languages/languages.dialog';
 import { LatestProjectsDialog } from '../dialogs/latest-projects/latest-projects.dialog';
 import { TranslationAddDialog } from '../dialogs/translation-add/translation-add.dialog';
+import { ConfirmDialog } from '../dialogs/confirm/confirm.dialog';
+
 
 @Injectable({providedIn: 'root'})
 export class DialogsService {
@@ -66,7 +68,18 @@ export class DialogsService {
     });
   }
 
-  openTranslationRemove(): void {
-
+  openConfirmDialog(header: string, message: string, color = 'primary') {
+    return this.matDialog.open(ConfirmDialog, {
+      autoFocus: false,
+      width: '480px',
+      height: '264px',
+      maxWidth: '94vw',
+      maxHeight: '94vh',
+      data: {
+        header,
+        message,
+        color
+      }
+    }).afterClosed();
   }
 }

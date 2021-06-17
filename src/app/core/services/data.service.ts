@@ -9,6 +9,8 @@ import { ProjectsService } from './projects.service';
 import { NotifyService } from './notify.service';
 import { LocaleUtilsService } from './locale-utils.service';
 import { SettingService } from './setting.service';
+import { DialogsService } from './dialogs.service';
+
 
 @Injectable({providedIn: 'root'})
 export class DataService {
@@ -26,7 +28,8 @@ export class DataService {
     private projects: ProjectsService,
     private notify: NotifyService,
     private localeUtils: LocaleUtilsService,
-    private setting: SettingService
+    private setting: SettingService,
+    private dialogs: DialogsService,
   ) {
     this.init();
     this.initListeners();
@@ -69,13 +72,9 @@ export class DataService {
   addId(id: string) {
     const tree = this.tree$.value;
     const keys = id.split('.');
-
     const newTree = _.orderBy(this.addIdRecursive(tree, keys), ['path'], ['asc'])
-    this.tree$.next(newTree);
 
-    // Update tree after created
-    // this.tree$.next(tree);
-    // console.log(tree);
+    this.tree$.next(newTree);
 
     this.notify.pushNotify('Translation added succesfully');
   }
@@ -135,14 +134,84 @@ export class DataService {
     return tree;
   }
 
-  removeId(key: string) {
+  removeSelectedId() {
+    const currentNode = this.currentNode$.value;
 
+    if (!currentNode) {
+      this.notify.pushNotify('Please select a translation to remove');
+      return;
+    }
+
+    if (currentNode.children.length > 0) {
+      this.dialogs.openConfirmDialog(
+        'Remove this translation?',
+        'I sure hope you know what are you doing :D',
+        'warn'
+      ).subscribe((accept: boolean) => {
+        if (accept === true) {
+          this.removeNode(this.currentNode$.value);
+        }
+      });
+      return;
+    }
+
+    this.removeNode(this.currentNode$.value);
+  }
+
+  private removeNode(node: Locale) {
+    // Remove from tree
+    const removeNodePath = node.path;
+    let newTree = _.cloneDeep(this.tree$.value);
+    newTree = this.recursiveRemoveNode(newTree, removeNodePath);
+
+    // Remove mapped data
+    delete this.dataMap[removeNodePath];
+    delete this.pathMap[removeNodePath];
+
+    for (const key in this.dataMap) {
+      if (key.startsWith(`${removeNodePath}.`)) {
+        delete(this.dataMap[key]);
+      }
+    }
+
+    for (const key in this.pathMap) {
+      if (key.startsWith(`${removeNodePath}.`)) {
+        delete(this.pathMap[key]);
+      }
+    }
+
+    this.tree$.next(newTree);
+    this.currentNode$.next(undefined);
+  }
+
+  private recursiveRemoveNode(tree: Locale[], removeNodePath: string) {
+    for (const node of tree) {
+      if (node.path === removeNodePath) {
+        return tree.filter(d => d.path !== removeNodePath);
+      } else {
+        if (node.children) {
+          node.children = this.recursiveRemoveNode(node.children, removeNodePath);
+
+          // Generate locale incase this become root node
+          if (node.children.length === 0) {
+            node.values = this.localeUtils.genEmptyLocaleData(this.setting.languages$.value);
+
+            this.dataMap[node.path] = {};
+
+            for (const lang of this.setting.languages$.value) {
+              this.dataMap[node.path][lang] = '';
+            }
+          }
+        }
+      }
+    }
+
+    return tree;
   }
 
   isExistedKey(keyPath: string): boolean {
     return this.pathMap[keyPath] === true;
   }
-
 
   reset() {
     this.tree$.next([]);

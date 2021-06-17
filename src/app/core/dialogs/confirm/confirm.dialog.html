@@ -1,0 +1,19 @@
+<div class="container" [ngClass]="data.color">
+  <div class="header">
+    <div class="title">{{data?.header}}</div>
+  </div>
+
+  <div class="content">
+    {{data?.message}}
+  </div>
+
+  <div class="footer">
+    <button mat-button style="margin-right: 8px" (click)="close()">
+      No
+    </button>
+
+    <button mat-raised-button [color]="data.color" (click)="ok()">
+      Yes
+    </button>
+  </div>
+</div>

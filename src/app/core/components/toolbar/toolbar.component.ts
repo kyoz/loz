@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 // Services
+import { DataService } from '../../services/data.service';
 import { FunctionsService } from '../../services/functions.service';
 import { DialogsService } from '../../services/dialogs.service';
 import { ProjectsService } from '../../services/projects.service';
@@ -18,6 +19,7 @@ export class CoreToolbarComponent {
   isSaving$ = new BehaviorSubject(false);
 
   constructor(
+    public data: DataService,
     public functions: FunctionsService,
     public dialogs: DialogsService,
     public projects: ProjectsService,

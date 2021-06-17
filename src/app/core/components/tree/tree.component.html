@@ -74,7 +74,9 @@
       Add Translation
     </button>
 
-    <button mat-menu-item style="display: flex; justify-content: flex-start; align-items: center">
+    <button mat-menu-item
+      style="display: flex; justify-content: flex-start; align-items: center"
+      (click)="data.removeSelectedId()">
       <img src="../../../../assets/icons/toolbar/remove_id.png"
            width="24px" height="24px"
            style="margin-right: 8px"/>
