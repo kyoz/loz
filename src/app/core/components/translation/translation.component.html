@@ -3,7 +3,12 @@
 
   <table>
     <tr *ngFor="let lang of setting.languages$ | async">
+      <td>
+        <core-language-icon [languageId]="lang" height="24"></core-language-icon>
+      </td>
+
       <td>{{lang}}</td>
+
       <td>
         <textarea #textarea
           rows="1"

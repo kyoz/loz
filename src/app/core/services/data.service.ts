@@ -41,6 +41,11 @@ export class DataService {
         return;
       }
 
+      if (currentNode.children.length > 0) {
+        this.currentKeys$.next([]);
+        return;
+      }
+
       this.currentKeys$.next(this.recursiveParseKeys(currentNode));
     });
   }

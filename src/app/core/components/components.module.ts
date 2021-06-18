@@ -8,12 +8,15 @@ import { CoreToolbarComponent } from './toolbar/toolbar.component';
 import { CoreTreeComponent } from './tree/tree.component';
 import { CoreEditorComponent } from './editor/editor.component';
 import { CoreTranslationComponent } from './translation/translation.component';
+import { CoreLanguageIcon } from './language-icon/language-icon.component';
+
 
 const COMPONENTS = [
   CoreToolbarComponent,
   CoreTreeComponent,
   CoreEditorComponent,
   CoreTranslationComponent,
+  CoreLanguageIcon,
 ];
 
 @NgModule({

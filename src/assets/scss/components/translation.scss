@@ -34,7 +34,7 @@
       }
     }
 
-    td:first-child {
+    td:first-child, td:nth-child(2) {
       white-space: nowrap;
       width: 1%;
       vertical-align: top;

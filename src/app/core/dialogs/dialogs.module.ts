@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CoreComponentsModule } from '../components/components.module';
 import { MaterialComponentsModule } from '../modules/material.module';
 
 // Dialogs 
@@ -24,6 +25,7 @@ const DIALOGS = [
   imports: [
     CommonModule,
     FormsModule,
+    CoreComponentsModule,
     MaterialComponentsModule,
   ],
   declarations: [
