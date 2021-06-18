@@ -50,6 +50,12 @@
     }
   }
 
+  .footer {
+    min-height: 38px;
+    max-height: 38px;
+    width: 100%;
+  }
+
   .loader-wrapper {
     display: flex;
     justify-content: center;

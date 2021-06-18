@@ -5,7 +5,7 @@
   padding: 12px 0;
   box-sizing: border-box;
   overflow: auto;
-  max-height: calc(100vh - 56px);
+  max-height: calc(100vh - 56px - 38px);
 
   .mat-tree-node {
     position: relative;

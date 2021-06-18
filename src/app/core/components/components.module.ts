@@ -4,19 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { MaterialComponentsModule } from '../modules/material.module';
 
 // Components
-import { CoreToolbarComponent } from './toolbar/toolbar.component';
-import { CoreTreeComponent } from './tree/tree.component';
 import { CoreEditorComponent } from './editor/editor.component';
-import { CoreTranslationComponent } from './translation/translation.component';
 import { CoreLanguageIcon } from './language-icon/language-icon.component';
+import { CoreStatusBarComponent } from './status-bar/status-bar.component';
+import { CoreToolbarComponent } from './toolbar/toolbar.component';
+import { CoreTranslationComponent } from './translation/translation.component';
+import { CoreTreeComponent } from './tree/tree.component';
 
 
 const COMPONENTS = [
-  CoreToolbarComponent,
-  CoreTreeComponent,
   CoreEditorComponent,
-  CoreTranslationComponent,
   CoreLanguageIcon,
+  CoreStatusBarComponent,
+  CoreToolbarComponent,
+  CoreTranslationComponent,
+  CoreTreeComponent,
 ];
 
 @NgModule({

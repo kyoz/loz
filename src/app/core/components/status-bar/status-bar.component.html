@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="left">
+    <div class="label" *ngIf="projects.currentProject$ | async">
+      Project: {{(projects.currentProject$ | async)?.path }}
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="label">
+      Translated: 90%
+    </div>
+  </div>
+</div>
