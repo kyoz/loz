@@ -12,7 +12,7 @@
 
       <div class="icon">
         <img width="auto" height="28px" draggable="false" 
-          src="../../../../assets/icons/tree/note.png" />
+          src="./assets/icons/tree/note.png" />
       </div>
 
       <div class="key">
@@ -31,7 +31,7 @@
             [class.opened]="treeControl.isExpanded(node)"
         >
           <img width="auto" height="14px" draggable="false"
-            src="../../../../assets/icons/tree/arrow_right.png" />
+            src="./assets/icons/tree/arrow_right.png" />
         </div>
         
         <div class="icon"
@@ -39,7 +39,7 @@
           (dblclick)="onNodeDoubleClick(node)"
         >
           <img width="auto" height="28px" draggable="false" 
-            src="../../../../assets/icons/tree/folder.png" />
+            src="./assets/icons/tree/folder.png" />
         </div>
 
         <div class="key"
@@ -68,7 +68,7 @@
       style="display: flex; justify-content: flex-start; align-items: center"
       (click)="dialogs.openTranslationAdd()">
 
-      <img src="../../../../assets/icons/toolbar/add_id.png"
+      <img src="./assets/icons/toolbar/add_id.png"
            width="24px" height="24px"
            style="margin-right: 8px" />
       Add Translation
@@ -77,7 +77,7 @@
     <button mat-menu-item
       style="display: flex; justify-content: flex-start; align-items: center"
       (click)="data.removeSelectedId()">
-      <img src="../../../../assets/icons/toolbar/remove_id.png"
+      <img src="./assets/icons/toolbar/remove_id.png"
            width="24px" height="24px"
            style="margin-right: 8px"/>
       Remove Translation
