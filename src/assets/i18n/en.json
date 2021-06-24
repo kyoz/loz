@@ -1,12 +1,29 @@
 {
-    "PAGES": {
-        "DETAIL": {
-            "BACK_TO_HOME": "Back to Home",
-            "TITLE": "Detail page !"
-        },
-        "HOME": {
-            "GO_TO_DETAIL": "Go to Detail",
-            "TITLE": "App works !"
-        }
-    }
+  "ACTION": {
+    "ADD_ID": "Add ID",
+    "CONFIG": "Config",
+    "CREATE": "Create",
+    "CREATE_PROJECT": "Create new",
+    "DONATE": "Donate",
+    "LANGUAGES": "Languages",
+    "OPEN": "Open",
+    "OPEN_PROJECT": "Open now",
+    "REMOVE_ID": "Remove ID",
+    "SAVE": "Save",
+    "USAGE": "How to use?"
+  },
+  "ERROR": "",
+  "LABEL": {
+    "LANGUAGE": "Language"
+  },
+  "NOTIFY": "",
+  "TEXT": {
+    "NO_PROJECT": "No opened project",
+    "NO_TRANSLATION": "No translation selected",
+    "PROCESSING": "Processing",
+    "PROJECT": "Project",
+    "SELECT_TRANSLATION": "Select one to start editing",
+    "TRANSLATED": "Translated"
+  },
+  "TITLE": ""
 }

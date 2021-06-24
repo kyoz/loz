@@ -1,0 +1,29 @@
+{
+  "ACTION": {
+    "ADD_ID": "Thêm ID",
+    "CONFIG": "Cài đặt",
+    "CREATE": "Tạo",
+    "CREATE_PROJECT": "Tạo mới",
+    "DONATE": "Ủng hộ",
+    "LANGUAGES": "Ngôn ngữ",
+    "OPEN": "Mở",
+    "OPEN_PROJECT": "Mở",
+    "REMOVE_ID": "Xóa ID",
+    "SAVE": "Lưu",
+    "USAGE": "Cách sử dụng?"
+  },
+  "ERROR": "",
+  "LABEL": {
+    "LANGUAGE": "Ngôn ngữ"
+  },
+  "NOTIFY": "",
+  "TEXT": {
+    "NO_PROJECT": "Chưa có dự án nào",
+    "NO_TRANSLATION": "Chưa có ngôn ngữ nào",
+    "PROCESSING": "Đang xử lý",
+    "PROJECT": "Dự án",
+    "SELECT_TRANSLATION": "Chọn một ngôn ngữ để bắt đầu",
+    "TRANSLATED": "Đã dịch"
+  },
+  "TITLE": ""
+}

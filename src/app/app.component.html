@@ -18,7 +18,7 @@
 
     <ng-template #noSelectedProject>
       <div class="none">
-        <div class="title">NO OPENED PROJECT</div>
+        <div class="title" translate>TEXT.NO_PROJECT</div>
 
         <div class="buttons">
           <button mat-stroked-button color="primary"
@@ -29,7 +29,7 @@
               <path fill="var(--color-primary)" d="M10,4L12,6H20A2,2 0 0,1 22,8V18A2,2 0 0,1 20,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4H10M15,9V12H12V14H15V17H17V14H20V12H17V9H15Z" />
             </svg>
 
-            Create new
+            <span translate>ACTION.CREATE_PROJECT</span>
           </button>
 
           <div style="width: 24px"><!--Spacer--></div>
@@ -41,12 +41,12 @@
               <path fill="#fff" d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" />
             </svg>
 
-            Open now
+            <span translate>ACTION.OPEN_PROJECT</span>
           </button>
         </div>
 
         <div class="user-guide" (click)="openUserGuide()">
-          How to use?
+          <span translate>ACTION.USAGE</span>
         </div>
       </div>
     </ng-template>
@@ -71,7 +71,9 @@
         </div>
       </div>
 
-      <span class="label">Processing...</span>
+      <span class="label">
+        <span translate>TEXT.PROCESSING</span>...
+      </span>
     </div>
   </div>
 </div>

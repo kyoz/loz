@@ -4,7 +4,7 @@
   </div>
 
   <div class="none" *ngIf="!(data.currentKeys$ | async)?.length">
-    <div class="label">NO TRANSLATION SELECTED</div>
-    <div class="description">Select one to start editing</div>
+    <div class="label" translate>TEXT.NO_TRANSLATION</div>
+    <div class="description" translate>TEXT.SELECT_TRANSLATION</div>
   </div>
 </div>
