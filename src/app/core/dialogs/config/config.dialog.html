@@ -12,6 +12,16 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label translate>LABEL.LANGUAGE</mat-label>
+      <mat-select
+          [value]="translate.currentLanguage$ | async"
+          (selectionChange)="onLanguageChange($event)">
+        <mat-option value="en">English</mat-option>
+        <mat-option value="vi">Tiếng Việt</mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <ng-template [ngIf]="projects.currentProject$ | async">
       <mat-form-field appearance="outline" floatLabel="always">
         <mat-label>Save indent format</mat-label>

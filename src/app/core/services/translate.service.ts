@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { TranslateService as NgxTranslate } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { TranslateService as NgxTranslate } from '@ngx-translate/core';
+
+import { BehaviorSubject, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
 import { STORAGE_LANG } from '../constants/storage-keys';
 
 @Injectable({ providedIn: 'root' })
@@ -17,32 +20,42 @@ export class TranslateService {
   init() {
     this.ngxTranslate.setDefaultLang('en');
 
-    const lang = localStorage.getItem(STORAGE_LANG);
+    const language = localStorage.getItem(STORAGE_LANG);
 
-    if (lang) {
-      this.currentLanguage$.next(lang);
-      this.ngxTranslate.setDefaultLang(lang);
-      this.ngxTranslate.use(lang);
-    } else {
-      this.changeLanguage('en');
+    if (!language) {
+      return this.setLanguage('en');
     }
+
+    this.setLanguage(language);
+    this.ngxTranslate.setDefaultLang(language);
   }
 
   changeLanguage(lang: string) {
     switch (lang) {
-      case 'en':
-        localStorage.setItem(STORAGE_LANG, 'vi');
-        this.ngxTranslate.use('vi');
-        this.currentLanguage$.next('vi');
+      case 'vi':
+        this.setLanguage('vi');
         break;
+
       default:
-        localStorage.setItem(STORAGE_LANG, lang);
-        this.ngxTranslate.use(lang);
-        this.currentLanguage$.next('en');
+        this.setLanguage('en');
+        break;
     }
   }
 
   get(key: string, params: object = {}): Promise<string> {
     return this.ngxTranslate.get(key, params).toPromise();
+  }
+
+  private fetchLangugeFile(language: string) {
+    return this.http.get(`/assets/i18n/${language}.json`).pipe(
+      map(() => true),
+      catchError(() => of(false))
+    ).toPromise();
+  }
+
+  private setLanguage(language) {
+    this.ngxTranslate.use(language);
+    this.currentLanguage$.next(language);
+    localStorage.setItem(STORAGE_LANG, language);
   }
 }

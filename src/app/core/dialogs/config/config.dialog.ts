@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import * as _ from 'lodash';
 
 // Services
+import { TranslateService } from '../../services/translate.service';
 import { ProjectsService } from '../../services/projects.service';
 import { SettingService } from '../../services/setting.service';
 
@@ -15,6 +15,7 @@ import { SettingService } from '../../services/setting.service';
 export class ConfigDialog {
   constructor(
     private dialogRef: MatDialogRef<ConfigDialog>,
+    public translate: TranslateService,
     public projects: ProjectsService,
     public setting: SettingService,
   ) {
@@ -22,6 +23,10 @@ export class ConfigDialog {
 
   onThemeChange(e) {
     console.log(e);
+  }
+
+  onLanguageChange(e) {
+    this.translate.changeLanguage(e.value);
   }
 
   onIndentFormatChange(e) {

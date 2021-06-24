@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { CoreComponentsModule } from '../components/components.module';
 import { MaterialComponentsModule } from '../modules/material.module';
 
-// Dialogs 
+// Dialogs
 import { ConfigDialog } from './config/config.dialog';
 import { CreateProjectDialog } from './create-project/create-project.dialog';
 import { LanguagesDialog } from './languages/languages.dialog';
@@ -27,6 +28,7 @@ const DIALOGS = [
     FormsModule,
     CoreComponentsModule,
     MaterialComponentsModule,
+    TranslateModule.forChild(),
   ],
   declarations: [
     ...DIALOGS
