@@ -55,3 +55,8 @@ You can disable "Developer Tools" by commenting `win.webContents.openDevTools();
 |`npm run electron:build`| Builds your application and creates an app consumable based on your operating system |
 
 **Your application is optimised. Only /dist folder and NodeJS dependencies are included in the final bundle.**
+
+## Maintainers
+
+- [Kyoz](https://github.com/kyoz) (banminkyoz@gmail.com)
+- [TienDat](https://github.com/tiendat77) (huynhztienzdat@gmail.com)
