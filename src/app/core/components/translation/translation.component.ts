@@ -4,16 +4,14 @@ import {
   Component,
   ElementRef,
   Input,
-  NgZone,
   QueryList,
   ViewChildren,
 } from '@angular/core';
-import { take } from 'rxjs/operators';
 
 // Services
+import { DataService } from '../../services/data.service';
 import { SettingService } from '../../services/setting.service';
 import { FunctionsService } from '../../services/functions.service';
-import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'core-translation',
@@ -24,17 +22,16 @@ export class CoreTranslationComponent implements AfterViewInit {
   @ViewChildren('textarea') textareas: QueryList<ElementRef>;
 
   @Input() key: string;
-  
+
   constructor(
-    public setting: SettingService,
     public data: DataService,
-    private functions: FunctionsService,
-    private ngZone: NgZone,
+    public setting: SettingService,
+    private functions: FunctionsService
   ) {
   }
 
   ngAfterViewInit() {
-    // This should be ngZone but i'v tested and it seem slower than setTimeout 
+    // This should be ngZone but i'v tested and it seem slower than setTimeout
     // So for now i use setTimeout
     setTimeout(() => {
       this.textareas.forEach((el: ElementRef) => {

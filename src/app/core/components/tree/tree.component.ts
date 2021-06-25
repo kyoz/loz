@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ViewChild } from '@angular/core';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -15,7 +15,7 @@ import { DialogsService } from '../../services/dialogs.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoreTreeComponent implements OnInit {
-  @ViewChild(MatMenuTrigger, {static: true}) matMenuTrigger: MatMenuTrigger; 
+  @ViewChild(MatMenuTrigger, {static: true}) matMenuTrigger: MatMenuTrigger;
 
   treeControl = new NestedTreeControl<Locale>(node => node?.children);
   dataSource = new MatTreeNestedDataSource<Locale>();
@@ -28,8 +28,7 @@ export class CoreTreeComponent implements OnInit {
   constructor(
     public data: DataService,
     public dialogs: DialogsService,
-    private appState: AppStateService,
-    private cd: ChangeDetectorRef,
+    private appState: AppStateService
   ) {
     this.dataSource.data = [];
   }
@@ -58,7 +57,7 @@ export class CoreTreeComponent implements OnInit {
       }
     });
 
-    
+
     // Right click detect when open menu context
     this.appState.onCdkOverlayRightClick$.subscribe(() => {
       this.matMenuTrigger.closeMenu();
@@ -72,18 +71,18 @@ export class CoreTreeComponent implements OnInit {
   }
 
   onNodeRightClick(event: MouseEvent, node) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     // Also select this node
     if (node && node.path !== this.data.currentNode$.value?.path) {
       this.data.currentNode$.next(node);
     }
 
-    this.menuPosition.x = event.clientX + 'px'; 
-    this.menuPosition.y = event.clientY + 'px'; 
+    this.menuPosition.x = event.clientX + 'px';
+    this.menuPosition.y = event.clientY + 'px';
 
     this.matMenuTrigger.menuData = node;
-    this.matMenuTrigger.openMenu(); 
+    this.matMenuTrigger.openMenu();
   }
 
   onNodeDoubleClick(node) {
