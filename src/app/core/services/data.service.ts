@@ -60,7 +60,7 @@ export class DataService {
 
   recursiveParseKeys(node: Locale) {
     const results = [];
-    
+
     if (node.values.length > 0) {
       results.push(node.path);
     }
@@ -149,8 +149,8 @@ export class DataService {
 
     if (currentNode.children.length > 0) {
       this.dialogs.openConfirmDialog(
-        'Remove this translation?',
-        'I sure hope you know what are you doing :D',
+        'TITLE.CONFIRM_REMOVE_TRANSLATION',
+        'TEXT.CONFIRM_REMOVE_TRANSLATION',
         'warn'
       ).subscribe((accept: boolean) => {
         if (accept === true) {

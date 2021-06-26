@@ -1,6 +1,6 @@
 <div class="container">
   <div class="header">
-    <div class="title">Lastest Project</div>
+    <div class="title" translate>TITLE.RECENT_PROJECTS</div>
   </div>
 
   <div class="content">
@@ -35,15 +35,15 @@
 
     <ng-template #noProjects>
       <div class="no-projects">
-        <div class="title">NO PROJECTS</div>
-        <div class="description">Please open your i18n folder to start</div>
+        <div class="title" translate>TEXT.NO_RECENT_PROJECT</div>
+        <div class="description" translate>TEXT.OPEN_TRANSLATE_FOLDER</div>
       </div>
     </ng-template>
   </div>
 
   <div class="footer">
     <button mat-button style="margin-right: 8px" (click)="close()">
-      Cancel
+      <span translate>ACTION.CANCEL</span>
     </button>
 
     <button mat-raised-button color="primary" (click)="openNewProject()">
@@ -51,7 +51,7 @@
         <path fill="#fff" d="M10,4L12,6H20A2,2 0 0,1 22,8V18A2,2 0 0,1 20,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4H10M15,9V12H12V14H15V17H17V14H20V12H17V9H15Z" />
       </svg>
 
-      Open new project
+      <span translate>ACTION.OPEN_NEW_PROJECT</span>
     </button>
   </div>
 </div>

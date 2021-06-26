@@ -1,18 +1,19 @@
 <div class="container">
   <div class="header">
-    <div class="title">Languages Config</div>
+    <div class="title" translate>TITLE.LANGUAGE_CONFIGURATION</div>
   </div>
 
   <div class="content">
     <div class="language-list">
-      <div class="label">Languages ({{(filteredLanguageList$ | async).length}})</div>
+      <div class="label">{{'LABEL.LANGUAGES' | translate}} ({{(filteredLanguageList$ | async).length}})</div>
 
       <div class="search-wrapper">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
           <path fill="var(--color-primary)" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
         </svg>
 
-        <input #search placeholder="Search languages"
+        <input #search
+          [placeholder]="'LABEL.SEARCH_LANGUAGE' | translate"
           (keyup)="onSearch$.next(search.value)" />
 
         <svg style="width:24px;height:24px;cursor:pointer" viewBox="0 0 24 24"
@@ -33,9 +34,7 @@
         </ng-template>
 
         <ng-template #noLangFound>
-          <div class="none">
-            No language found
-          </div>
+          <div class="none" translate>TEXT.NO_LANGUAGE_FOUND</div>
         </ng-template>
       </div>
     </div>
@@ -47,7 +46,7 @@
     </div>
 
     <div class="language-picked">
-      <div class="label">Selected ({{(selectedLanguageList$ | async).length}})</div>
+      <div class="label">{{'LABEL.SELECTED' | translate}} ({{(selectedLanguageList$ | async).length}})</div>
 
       <div class="language-wrapper" #selectedList style="height: 100%">
         <ng-template [ngIf]="(selectedLanguageList$ | async).length > 0" [ngIfElse]="noSelected">
@@ -59,9 +58,7 @@
         </ng-template>
 
         <ng-template #noSelected>
-          <div class="none">
-            No language selected
-          </div>
+          <div class="none" translate>TEXT.NO_LANGUAGE_SELECTED</div>
         </ng-template>
       </div>
     </div>
@@ -69,11 +66,13 @@
 
   <div class="footer">
     <div class="primary-lang-wrapper">
-      <div class="label">Primary language:</div>
+      <div class="label">
+        <span translate>LABEL.PRIMARY_LANGUAGE</span>:
+      </div>
 
       <mat-form-field>
         <mat-select [(value)]="primaryLanguageId">
-          <mat-option value="">None</mat-option>
+          <mat-option value="">{{'TEXT.NONE' | translate}}</mat-option>
 
           <mat-option *ngFor="let lang of selectedLanguageList$ | async" [value]="lang.id">
             {{lang.description}}
@@ -87,7 +86,7 @@
         <path fill="#fff" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
       </svg>
 
-      Accept
+      <span translate>ACTION.ACCEPT</span>
     </button>
   </div>
 </div>

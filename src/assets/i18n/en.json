@@ -1,33 +1,69 @@
 {
   "ACTION": {
+    "ACCEPT": "Accept",
     "ADD_ID": "Add ID",
     "ADD_TRANSLATION": "Add Translation",
-    "CONFIG": "Config",
+    "CANCEL": "Cancel",
+    "CLOSE": "Close",
+    "CONFIG": "Configs",
     "CREATE": "Create",
     "CREATE_FIRST_TRANSLATION": "Create first one",
     "CREATE_PROJECT": "Create new",
     "DONATE": "Donate",
+    "DONE": "Done",
     "LANGUAGES": "Languages",
+    "NO": "No",
     "OPEN": "Open",
+    "OPEN_NEW_PROJECT": "Open new project",
     "OPEN_PROJECT": "Open now",
     "REMOVE_ID": "Remove ID",
     "REMOVE_TRANSLATION": "Remove Translation",
     "SAVE": "Save",
-    "USAGE": "How to use?"
+    "USAGE": "How to use?",
+    "YES": "Yes"
   },
   "ERROR": "",
   "LABEL": {
-    "LANGUAGE": "Language"
+    "AUTO_SAVE": "Auto save",
+    "CHOOSE_FOLDER": "Click to choose folder",
+    "CREATE_TRANSLATION_HINT": "Should be something like",
+    "DARK": "Dark",
+    "INDENT_FORMAT": "Save indent format",
+    "INVALID_TRANSLATION_HINT": "Not valid translation ID. Please change it",
+    "LANGUAGE": "Language",
+    "LANGUAGES": "Languages",
+    "LIGHT": "Light",
+    "MINIFY": "Minify (No spaces)",
+    "PRIMARY_LANGUAGE": "Primary Language",
+    "SEARCH_LANGUAGE": "Search Language",
+    "SELECTED": "Selected",
+    "SPACES": "spaces",
+    "THEME": "Theme",
+    "TRANSLATION_ID": "Translation ID",
+    "VALID_TRANSLATION_HINT": "Valid translation ID"
   },
   "NOTIFY": "",
   "TEXT": {
+    "CONFIRM_REMOVE_TRANSLATION": "I hope you know what you are doing :D",
+    "NONE": "None",
+    "NO_LANGUAGE_FOUND": "No language found",
+    "NO_LANGUAGE_SELECTED": "No language selected",
     "NO_PROJECT": "No opened project",
+    "NO_RECENT_PROJECT": "No recent projects",
     "NO_TRANSLATION_KEY": "No translation existed",
     "NO_TRANSLATION_SELECTED": "No translation selected",
+    "OPEN_TRANSLATE_FOLDER": "Open your i18n folder to start",
     "PROCESSING": "Processing",
     "PROJECT": "Project",
     "SELECT_TRANSLATION": "Select one to start editing",
     "TRANSLATED": "Translated"
   },
-  "TITLE": ""
+  "TITLE": {
+    "CONFIGURATION": "Configuration",
+    "CONFIRM_REMOVE_TRANSLATION": "Remote this translation?",
+    "CREATE_NEW_PROJECT": "Create new Project",
+    "CREATE_NEW_TRANSLATION": "Create new translation",
+    "LANGUAGE_CONFIGURATION": "Languages Config",
+    "RECENT_PROJECTS": "Recent projects"
+  }
 }

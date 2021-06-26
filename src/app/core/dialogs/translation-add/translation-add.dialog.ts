@@ -1,8 +1,7 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import { distinctUntilChanged, debounceTime, filter } from 'rxjs/operators';
-import { Locale } from '../../interfaces';
 
 // Services
 import { DataService } from '../../services/data.service';
@@ -52,7 +51,7 @@ export class TranslationAddDialog {
       )
       .subscribe((key: string) => {
         this.isDirty = true;
-        this.isValid$.next(this.localeUtils.isValidLocaleKey(key))
+        this.isValid$.next(this.localeUtils.isValidLocaleKey(key));
     });
   }
 
