@@ -1,14 +1,14 @@
 <div class="container">
   <div class="header">
-    <div class="title">Create new translation</div>
+    <div class="title" translate>TITLE.CREATE_NEW_TRANSLATION</div>
   </div>
 
   <div class="content">
     <mat-form-field appearance="outline">
-      <mat-label>Translation ID</mat-label>
+      <mat-label translate>LABEL.TRANSLATION_ID</mat-label>
 
       <input matInput #input
-        placeholder="Translation ID"
+        [placeholder]="'LABEL.TRANSLATION_ID' | translate"
         (input)="onTranslationIdChange$.next(input.value)"
         (keyup.enter)="create()"
         [(ngModel)]="translationId"
@@ -16,15 +16,15 @@
 
       <mat-hint align=end [ngSwitch]="isValid$ | async">
         <span *ngSwitchCase="undefined">
-          Should be something like: <b>GENERAL.TEXT.HELLO</b>
+          {{'LABEL.CREATE_TRANSLATION_HINT' | translate}}: <b>GENERAL.TEXT.HELLO</b>
         </span>
 
-        <span style="color: #43A047" *ngSwitchCase="true">
-          Valid translation ID
+        <span style="color: #43A047" *ngSwitchCase="true" translate>
+          LABEL.VALID_TRANSLATION_HINT
         </span>
 
-        <span style="color: #FF3D00" *ngSwitchDefault>
-          Not valid translation ID. Please change it
+        <span style="color: #FF3D00" *ngSwitchDefault translate>
+          LABEL.INVALID_TRANSLATION_HINT
         </span>
       </mat-hint>
     </mat-form-field>
@@ -32,7 +32,7 @@
 
   <div class="footer">
     <button mat-button style="margin-right: 8px" (click)="close()">
-      Cancel
+      <span translate>ACTION.CANCEL</span>
     </button>
 
     <button mat-raised-button color="primary"
@@ -43,7 +43,7 @@
         <path fill="#fff" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
       </svg>
 
-      Create
+      <span translate>ACTION.CREATE</span>
     </button>
   </div>
 </div>

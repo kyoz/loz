@@ -60,7 +60,7 @@ export class DataService {
 
   recursiveParseKeys(node: Locale) {
     const results = [];
-    
+
     if (node.values.length > 0) {
       results.push(node.path);
     }
@@ -81,7 +81,7 @@ export class DataService {
 
     this.tree$.next(newTree);
 
-    this.notify.pushNotify('Translation added succesfully');
+    this.notify.pushNotify('NOTIFY.TRANSLATION_ID_ADDED');
   }
 
   private addIdRecursive(tree: Locale[], keys: string[], parentPath: string = '') {
@@ -143,14 +143,14 @@ export class DataService {
     const currentNode = this.currentNode$.value;
 
     if (!currentNode) {
-      this.notify.pushNotify('Please select a translation to remove');
+      this.notify.pushNotify('NOTIFY.SELECT_TRANSLATION_TO_REMOVE');
       return;
     }
 
     if (currentNode.children.length > 0) {
       this.dialogs.openConfirmDialog(
-        'Remove this translation?',
-        'I sure hope you know what are you doing :D',
+        'TITLE.CONFIRM_REMOVE_TRANSLATION',
+        'TEXT.CONFIRM_REMOVE_TRANSLATION',
         'warn'
       ).subscribe((accept: boolean) => {
         if (accept === true) {

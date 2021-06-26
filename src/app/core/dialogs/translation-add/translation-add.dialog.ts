@@ -1,8 +1,7 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import { distinctUntilChanged, debounceTime, filter } from 'rxjs/operators';
-import { Locale } from '../../interfaces';
 
 // Services
 import { DataService } from '../../services/data.service';
@@ -52,13 +51,13 @@ export class TranslationAddDialog {
       )
       .subscribe((key: string) => {
         this.isDirty = true;
-        this.isValid$.next(this.localeUtils.isValidLocaleKey(key))
+        this.isValid$.next(this.localeUtils.isValidLocaleKey(key));
     });
   }
 
   create() {
     if (!this.isDirty) {
-      this.isValid$.next(this.localeUtils.isValidLocaleKey(this.translationId))
+      this.isValid$.next(this.localeUtils.isValidLocaleKey(this.translationId));
       return;
     }
 
@@ -68,7 +67,7 @@ export class TranslationAddDialog {
 
     // Check if key is existed
     if (this.data.isExistedKey(this.translationId)) {
-      this.notify.pushNotify('Translation Id is already existed. Please use another one')
+      this.notify.pushNotify('NOTIFY.TRANSLATION_ID_EXISTED');
       return;
     }
 
@@ -80,4 +79,3 @@ export class TranslationAddDialog {
     this.dialogRef.close();
   }
 }
-

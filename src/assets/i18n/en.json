@@ -1,12 +1,82 @@
 {
-    "PAGES": {
-        "DETAIL": {
-            "BACK_TO_HOME": "Back to Home",
-            "TITLE": "Detail page !"
-        },
-        "HOME": {
-            "GO_TO_DETAIL": "Go to Detail",
-            "TITLE": "App works !"
-        }
-    }
+  "ACTION": {
+    "ACCEPT": "Accept",
+    "ADD_ID": "Add ID",
+    "ADD_TRANSLATION": "Add Translation",
+    "CANCEL": "Cancel",
+    "CLOSE": "Close",
+    "CONFIG": "Configs",
+    "CREATE": "Create",
+    "CREATE_FIRST_TRANSLATION": "Create first one",
+    "CREATE_PROJECT": "Create new",
+    "DONATE": "Donate",
+    "DONE": "Done",
+    "LANGUAGES": "Languages",
+    "NO": "No",
+    "OPEN": "Open",
+    "OPEN_NEW_PROJECT": "Open new project",
+    "OPEN_PROJECT": "Open now",
+    "REMOVE_ID": "Remove ID",
+    "REMOVE_TRANSLATION": "Remove Translation",
+    "SAVE": "Save",
+    "USAGE": "How to use?",
+    "YES": "Yes"
+  },
+  "ERROR": "",
+  "LABEL": {
+    "AUTO_SAVE": "Auto save",
+    "CHOOSE_FOLDER": "Click to choose folder",
+    "CREATE_TRANSLATION_HINT": "Should be something like",
+    "DARK": "Dark",
+    "INDENT_FORMAT": "Save indent format",
+    "INVALID_TRANSLATION_HINT": "Not valid translation ID. Please change it",
+    "LANGUAGE": "Language",
+    "LANGUAGES": "Languages",
+    "LIGHT": "Light",
+    "MINIFY": "Minify (No spaces)",
+    "PRIMARY_LANGUAGE": "Primary Language",
+    "SEARCH_LANGUAGE": "Search Language",
+    "SELECTED": "Selected",
+    "SPACES": "spaces",
+    "THEME": "Theme",
+    "TRANSLATION_ID": "Translation ID",
+    "VALID_TRANSLATION_HINT": "Valid translation ID"
+  },
+  "NOTIFY": {
+    "CREATED_PROJECT": "Created project succesfully",
+    "INVALID_FOLDER": "Please choose an empty folder to init",
+    "INVALID_I18N_FOLDER": "Not valid i18n folder",
+    "NO_PRIMARY_LANGUAGE": "Please choose your primary language",
+    "NO_SELECTED_LANGUAGE": "Please choose at least one language",
+    "SAVED": "Saved",
+    "SELECT_LANGUAGE": "You must choose at least one language",
+    "SELECT_PRIMARY_LANGUAGE": "You must choose primary language",
+    "SELECT_TRANSLATION_TO_REMOVE": "Please select a translation to remove",
+    "TRANSLATION_ID_ADDED": "Translation added succesfully",
+    "TRANSLATION_ID_EXISTED": "Translation Id is already existed. Please use another one"
+  },
+  "TEXT": {
+    "CONFIRM_REMOVE_TRANSLATION": "I hope you know what you are doing :D",
+    "NONE": "None",
+    "NO_LANGUAGE_FOUND": "No language found",
+    "NO_LANGUAGE_SELECTED": "No language selected",
+    "NO_PROJECT": "No opened project",
+    "NO_RECENT_PROJECT": "No recent projects",
+    "NO_TRANSLATION_KEY": "No translation existed",
+    "NO_TRANSLATION_SELECTED": "No translation selected",
+    "OPEN_TRANSLATE_FOLDER": "Open your i18n folder to start",
+    "PROCESSING": "Processing",
+    "PROJECT": "Project",
+    "SELECT_TRANSLATION": "Select one to start editing",
+    "TRANSLATED": "Translated"
+  },
+  "TITLE": {
+    "CONFIGURATION": "Configuration",
+    "CONFIRM_REMOVE_TRANSLATION": "Remote this translation?",
+    "CREATE_NEW_PROJECT": "Create new Project",
+    "CREATE_NEW_TRANSLATION": "Create new translation",
+    "LANGUAGE_CONFIGURATION": "Languages Config",
+    "RECENT_PROJECTS": "Recent projects",
+    "SELECT_AN_EMPTY_FOLDER": "Please choose an empty folder"
+  }
 }

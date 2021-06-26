@@ -11,7 +11,7 @@
       <div class="background"></div>
 
       <div class="icon">
-        <img width="auto" height="28px" draggable="false" 
+        <img width="auto" height="28px" draggable="false"
           src="./assets/icons/tree/note.png" />
       </div>
 
@@ -33,12 +33,12 @@
           <img width="auto" height="14px" draggable="false"
             src="./assets/icons/tree/arrow_right.png" />
         </div>
-        
+
         <div class="icon"
           (click)="onNodeClick(node)"
           (dblclick)="onNodeDoubleClick(node)"
         >
-          <img width="auto" height="28px" draggable="false" 
+          <img width="auto" height="28px" draggable="false"
             src="./assets/icons/tree/folder.png" />
         </div>
 
@@ -57,11 +57,11 @@
   </mat-tree>
 
   <!-- Hidden div to set the position of the menu -->
-  <div style="visibility: hidden; position: fixed;" 
-      [style.left]="menuPosition.x" 
-      [style.top]="menuPosition.y" 
+  <div style="visibility: hidden; position: fixed;"
+      [style.left]="menuPosition.x"
+      [style.top]="menuPosition.y"
       [matMenuTriggerFor]="contextMenu">
-  </div> 
+  </div>
 
   <mat-menu #contextMenu="matMenu">
     <button mat-menu-item
@@ -71,7 +71,7 @@
       <img src="./assets/icons/toolbar/add_id.png"
            width="24px" height="24px"
            style="margin-right: 8px" />
-      Add Translation
+      <span translate>ACTION.ADD_TRANSLATION</span>
     </button>
 
     <button mat-menu-item
@@ -80,21 +80,19 @@
       <img src="./assets/icons/toolbar/remove_id.png"
            width="24px" height="24px"
            style="margin-right: 8px"/>
-      Remove Translation
+      <span translate>ACTION.REMOVE_TRANSLATION</span>
     </button>
   </mat-menu>
 
   <div class="none" *ngIf="(data.tree$ | async).length === 0">
-    <div class="label">
-      NO TRANSLATION EXIST
-    </div>
+    <div class="label" translate>TEXT.NO_TRANSLATION_KEY</div>
 
     <button mat-raised-button color="primary" (click)="dialogs.openTranslationAdd()">
       <svg style="width:24px;height:24px" viewBox="0 0 24 24">
         <path fill="#fff" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
       </svg>
 
-      Create first one
+      <span translate>ACTION.CREATE_FIRST_TRANSLATION</span>
     </button>
   </div>
 </div>

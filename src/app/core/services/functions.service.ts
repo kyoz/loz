@@ -40,14 +40,14 @@ export class FunctionsService {
         return;
       }
 
-      console.log('save');
       this.save(true);
     });
   }
 
   openI18nFolder(): void {
+    // TODO: translate window title
     this.electron.remote.dialog.showOpenDialog(
-      this.electron.remote.getCurrentWindow(), 
+      this.electron.remote.getCurrentWindow(),
       {
         title: 'Choose your i18n folder',
         message: 'Choose your i18n folder',
@@ -74,7 +74,7 @@ export class FunctionsService {
 
     if (!this.isValidI18nFolder(fileNames)) {
       this.projects.removeProject(folderPath);
-      this.notify.pushNotify('Not valid i18n folder');
+      this.notify.pushNotify('NOTIFY.INVALID_I18N_FOLDER');
       return;
     }
 
@@ -84,8 +84,6 @@ export class FunctionsService {
     const localeMap = [];
 
     try {
-      const languages = [];
-
       for (const fileName of fileNames) {
         const locale = fileName.replace('.json', '');
         const localeData = JSON.parse(
@@ -150,7 +148,7 @@ export class FunctionsService {
     }
 
     this.loader.hide();
-    this.notify.pushNotify('Saved', null, 1500);
+    this.notify.pushNotify('NOTIFY.SAVED', null, 1500);
   }
 
   private isValidI18nFolder(fileNames: string[]): boolean {
