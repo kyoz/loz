@@ -42,7 +42,19 @@
     "TRANSLATION_ID": "Translation ID",
     "VALID_TRANSLATION_HINT": "Valid translation ID"
   },
-  "NOTIFY": "",
+  "NOTIFY": {
+    "CREATED_PROJECT": "Created project succesfully",
+    "INVALID_FOLDER": "Please choose an empty folder to init",
+    "INVALID_I18N_FOLDER": "Not valid i18n folder",
+    "NO_PRIMARY_LANGUAGE": "Please choose your primary language",
+    "NO_SELECTED_LANGUAGE": "Please choose at least one language",
+    "SAVED": "Saved",
+    "SELECT_LANGUAGE": "You must choose at least one language",
+    "SELECT_PRIMARY_LANGUAGE": "You must choose primary language",
+    "SELECT_TRANSLATION_TO_REMOVE": "Please select a translation to remove",
+    "TRANSLATION_ID_ADDED": "Translation added succesfully",
+    "TRANSLATION_ID_EXISTED": "Translation Id is already existed. Please use another one"
+  },
   "TEXT": {
     "CONFIRM_REMOVE_TRANSLATION": "I hope you know what you are doing :D",
     "NONE": "None",
@@ -64,6 +76,7 @@
     "CREATE_NEW_PROJECT": "Create new Project",
     "CREATE_NEW_TRANSLATION": "Create new translation",
     "LANGUAGE_CONFIGURATION": "Languages Config",
-    "RECENT_PROJECTS": "Recent projects"
+    "RECENT_PROJECTS": "Recent projects",
+    "SELECT_AN_EMPTY_FOLDER": "Please choose an empty folder"
   }
 }

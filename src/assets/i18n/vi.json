@@ -42,7 +42,19 @@
     "TRANSLATION_ID": "Mã bản dịch",
     "VALID_TRANSLATION_HINT": "Mã bản dịch hợp lệ"
   },
-  "NOTIFY": "",
+  "NOTIFY": {
+    "CREATED_PROJECT": "Khởi tạo dự án thành công",
+    "INVALID_FOLDER": "Hãy chọn một thư mục rỗng để khởi tạo",
+    "INVALID_I18N_FOLDER": "Thư mục i18n không hợp lệ",
+    "NO_PRIMARY_LANGUAGE": "Hãy chọn ngôn ngữ chính",
+    "NO_SELECTED_LANGUAGE": "Hãy chọn ít nhất một ngôn ngữ để khởi tạo",
+    "SAVED": "Đã lưu",
+    "SELECT_LANGUAGE": "Bạn phải chọn ít nhất một ngôn ngữ",
+    "SELECT_PRIMARY_LANGUAGE": "Bạn phải chọn ngôn ngữ chính",
+    "SELECT_TRANSLATION_TO_REMOVE": "Hãy chọn một bản dịch để xóa",
+    "TRANSLATION_ID_ADDED": "Thêm bản dịch thành công",
+    "TRANSLATION_ID_EXISTED": "Mã bản dịch đã tồn tại. Hãy chọn một mã khác"
+  },
   "TEXT": {
     "CONFIRM_REMOVE_TRANSLATION": "Hãy chắc rằng bạn biết bạn đang làm gì :D",
     "NONE": "Trống",
@@ -64,6 +76,7 @@
     "CREATE_NEW_PROJECT": "Tạo dự án mới",
     "CREATE_NEW_TRANSLATION": "Tạo bản dịch mới",
     "LANGUAGE_CONFIGURATION": "Tùy chỉnh ngôn ngữ",
-    "RECENT_PROJECTS": "Dự án gần đây"
+    "RECENT_PROJECTS": "Dự án gần đây",
+    "SELECT_AN_EMPTY_FOLDER": "Chọn một thư mục rỗng"
   }
 }

@@ -12,7 +12,6 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import Fuse from 'fuse.js';
 import * as _ from 'lodash';
-import * as moment from 'moment';
 
 // Services
 import { NotifyService } from '../../services/notify.service';
@@ -124,12 +123,12 @@ export class LanguagesDialog implements OnInit, OnDestroy {
 
   accept() {
     if (!this.selectedLanguageList$.value.length) {
-      this.notify.pushNotify('You must choose at least one languages');
+      this.notify.pushNotify('NOTIFY.SELECT_LANGUAGE');
       return;
     }
 
     if (!this.primaryLanguageId.length) {
-      this.notify.pushNotify('You must choose primary language');
+      this.notify.pushNotify('NOTIFY.SELECT_PRIMARY_LANGUAGE');
       return;
     }
 

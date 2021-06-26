@@ -12,15 +12,13 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import Fuse from 'fuse.js';
 import * as _ from 'lodash';
-import * as moment from 'moment';
 
 // Services
 import { ElectronService } from '../../services/electron.service';
 import { FunctionsService } from '../../services/functions.service';
+import { TranslateService } from '../../services/translate.service';
 import { LoaderService } from '../../services/loader.service';
 import { NotifyService } from '../../services/notify.service';
-import { ProjectsService } from '../../services/projects.service';
-import { SettingService } from '../../services/setting.service';
 
 @Component({
   selector: 'create-project-dialog',
@@ -33,6 +31,7 @@ export class CreateProjectDialog implements OnInit, OnDestroy {
   @ViewChild('search') searchInputEl: ElementRef;
 
   // Folders
+  pathTitle;
   folderPath$ = new BehaviorSubject('');
   isValidFolder$ = new BehaviorSubject(undefined);
 
@@ -50,15 +49,16 @@ export class CreateProjectDialog implements OnInit, OnDestroy {
     private dialogRef: MatDialogRef<CreateProjectDialog>,
     private electron: ElectronService,
     private functions: FunctionsService,
+    private translate: TranslateService,
     private loader: LoaderService,
-    private notify: NotifyService,
-    private projects: ProjectsService,
-    private setting: SettingService,
-  ) {
-  }
+    private notify: NotifyService
+  ) { }
 
   ngOnInit() {
     this.initSearch();
+    this.translate.get('TITLE.SELECT_AN_EMPTY_FOLDER').then((title) => {
+      this.pathTitle = title;
+    });
   }
 
   ngOnDestroy() {
@@ -126,10 +126,10 @@ export class CreateProjectDialog implements OnInit, OnDestroy {
 
   chooseFolder() {
     this.electron.remote.dialog.showOpenDialog(
-      this.electron.remote.getCurrentWindow(), 
+      this.electron.remote.getCurrentWindow(),
       {
-        title: 'Please choose an empty folder',
-        message: 'Please choose an empty folder',
+        title: this.pathTitle,
+        message: this.pathTitle,
         properties: [
           'openDirectory'
         ]
@@ -154,17 +154,17 @@ export class CreateProjectDialog implements OnInit, OnDestroy {
 
   create() {
     if (!this.isValidFolder$.value) {
-      this.notify.pushNotify('Please choose an empty folder to init');
+      this.notify.pushNotify('NOTIFY.INVALID_FOLDER');
       return;
     }
 
     if (!this.selectedLanguageList$.value.length) {
-      this.notify.pushNotify('Please choose at least one language');
+      this.notify.pushNotify('NOTIFY.NO_SELECTED_LANGUAGE');
       return;
     }
 
     if (!this.primaryLanguageId) {
-      this.notify.pushNotify('Please choose your primary language');
+      this.notify.pushNotify('NOTIFY.NO_PRIMARY_LANGUAGE');
       return;
     }
 
@@ -173,7 +173,7 @@ export class CreateProjectDialog implements OnInit, OnDestroy {
     this.loader.show();
     const folderPath = this.folderPath$.value;
 
-    // To Ensure everything work correctly, remove folder and create new empty 
+    // To Ensure everything work correctly, remove folder and create new empty
     // one, cause user can create files to selected folder during create new
     // project
     this.electron.fs.rmdirSync(folderPath, {recursive: true});
@@ -185,7 +185,7 @@ export class CreateProjectDialog implements OnInit, OnDestroy {
     }
 
     this.functions.processI18nFolder(folderPath, this.primaryLanguageId);
-    this.notify.pushNotify('Created project succesfully');
+    this.notify.pushNotify('NOTIFY.CREATED_PROJECT');
   }
 
   scrollToTop(container: ElementRef) {

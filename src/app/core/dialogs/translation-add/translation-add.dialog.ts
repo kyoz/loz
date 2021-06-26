@@ -57,7 +57,7 @@ export class TranslationAddDialog {
 
   create() {
     if (!this.isDirty) {
-      this.isValid$.next(this.localeUtils.isValidLocaleKey(this.translationId))
+      this.isValid$.next(this.localeUtils.isValidLocaleKey(this.translationId));
       return;
     }
 
@@ -67,7 +67,7 @@ export class TranslationAddDialog {
 
     // Check if key is existed
     if (this.data.isExistedKey(this.translationId)) {
-      this.notify.pushNotify('Translation Id is already existed. Please use another one')
+      this.notify.pushNotify('NOTIFY.TRANSLATION_ID_EXISTED');
       return;
     }
 
@@ -79,4 +79,3 @@ export class TranslationAddDialog {
     this.dialogRef.close();
   }
 }
-

@@ -81,7 +81,7 @@ export class DataService {
 
     this.tree$.next(newTree);
 
-    this.notify.pushNotify('Translation added succesfully');
+    this.notify.pushNotify('NOTIFY.TRANSLATION_ID_ADDED');
   }
 
   private addIdRecursive(tree: Locale[], keys: string[], parentPath: string = '') {
@@ -143,7 +143,7 @@ export class DataService {
     const currentNode = this.currentNode$.value;
 
     if (!currentNode) {
-      this.notify.pushNotify('Please select a translation to remove');
+      this.notify.pushNotify('NOTIFY.SELECT_TRANSLATION_TO_REMOVE');
       return;
     }
 
