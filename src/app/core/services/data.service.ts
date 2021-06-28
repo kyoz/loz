@@ -166,8 +166,6 @@ export class DataService {
   private removeNode(node: Locale) {
     // Remove from tree
     const removeNodePath = node.path;
-    let newTree = _.cloneDeep(this.tree$.value);
-    newTree = this.recursiveRemoveNode(newTree, removeNodePath);
 
     // Remove mapped data
     delete this.dataMap[removeNodePath];
@@ -175,15 +173,18 @@ export class DataService {
 
     for (const key in this.dataMap) {
       if (key.startsWith(`${removeNodePath}.`)) {
-        delete(this.dataMap[key]);
+        delete this.dataMap[key];
       }
     }
 
     for (const key in this.pathMap) {
       if (key.startsWith(`${removeNodePath}.`)) {
-        delete(this.pathMap[key]);
+        delete this.pathMap[key];
       }
     }
+
+    let newTree = this.tree$.value;
+    newTree = this.recursiveRemoveNode(newTree, removeNodePath);
 
     this.tree$.next(newTree);
     this.currentNode$.next(undefined);
@@ -198,7 +199,7 @@ export class DataService {
           node.children = this.recursiveRemoveNode(node.children, removeNodePath);
 
           // Generate locale incase this become root node
-          if (node.children.length === 0) {
+          if (node.children.length === 0 && (!node.values || node.values.length === 0)) {
             node.values = this.localeUtils.genEmptyLocaleData(this.setting.languages$.value);
 
             this.dataMap[node.path] = {};

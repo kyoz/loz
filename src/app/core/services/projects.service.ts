@@ -77,7 +77,7 @@ export class ProjectsService {
     this.projectList = this.projectList.filter(d => d.path !== path);
     this.storage.set(STORAGE_PROJECTS, this.projectList);
 
-    if (path === this.currentProject$.value.path) {
+    if (path === this.currentProject$.value?.path) {
       this.currentProject$.next(undefined);
     }
 
