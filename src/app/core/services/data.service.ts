@@ -188,6 +188,7 @@ export class DataService {
 
     this.tree$.next(newTree);
     this.currentNode$.next(undefined);
+    this.currentKeys$.next([]);
   }
 
   private recursiveRemoveNode(tree: Locale[], removeNodePath: string) {
