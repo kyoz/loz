@@ -53,7 +53,8 @@
     "SELECT_PRIMARY_LANGUAGE": "You must choose primary language",
     "SELECT_TRANSLATION_TO_REMOVE": "Please select a translation to remove",
     "TRANSLATION_ID_ADDED": "Translation added succesfully",
-    "TRANSLATION_ID_EXISTED": "Translation Id is already existed. Please use another one"
+    "TRANSLATION_ID_EXISTED": "Translation Id is already existed. Please use another one",
+    "COPIED_KEY": "Copied"
   },
   "TEXT": {
     "CONFIRM_REMOVE_TRANSLATION": "I hope you know what you are doing :D",

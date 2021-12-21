@@ -53,7 +53,8 @@
     "SELECT_PRIMARY_LANGUAGE": "Bạn phải chọn ngôn ngữ chính",
     "SELECT_TRANSLATION_TO_REMOVE": "Hãy chọn một bản dịch để xóa",
     "TRANSLATION_ID_ADDED": "Thêm bản dịch thành công",
-    "TRANSLATION_ID_EXISTED": "Mã bản dịch đã tồn tại. Hãy chọn một mã khác"
+    "TRANSLATION_ID_EXISTED": "Mã bản dịch đã tồn tại. Hãy chọn một mã khác",
+    "COPIED_KEY": "Đã sao chép"
   },
   "TEXT": {
     "CONFIRM_REMOVE_TRANSLATION": "Hãy chắc rằng bạn biết bạn đang làm gì :D",

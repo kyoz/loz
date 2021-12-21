@@ -12,6 +12,7 @@ import {
 import { DataService } from '../../services/data.service';
 import { SettingService } from '../../services/setting.service';
 import { FunctionsService } from '../../services/functions.service';
+import { NotifyService } from '../../services/notify.service';
 
 @Component({
   selector: 'core-translation',
@@ -26,9 +27,9 @@ export class CoreTranslationComponent implements AfterViewInit {
   constructor(
     public data: DataService,
     public setting: SettingService,
-    private functions: FunctionsService
-  ) {
-  }
+    private functions: FunctionsService,
+    private notify: NotifyService
+  ) { }
 
   ngAfterViewInit() {
     // This should be ngZone but i'v tested and it seem slower than setTimeout
@@ -45,6 +46,10 @@ export class CoreTranslationComponent implements AfterViewInit {
     el.style.height = 'auto';
     el.style.height = `${el.scrollHeight}px`;
     this.functions.onSaveRequest$.next(new Date());
+  }
+
+  copiedKey() {
+    this.notify.pushNotify('NOTIFY.COPIED_KEY');
   }
 }
 
