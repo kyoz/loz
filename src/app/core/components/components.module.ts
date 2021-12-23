@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import { MaterialComponentsModule } from '../modules/material.module';
 
 // Components
@@ -26,6 +27,7 @@ const COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
+    ClipboardModule,
     MaterialComponentsModule,
     TranslateModule.forChild(),
   ],

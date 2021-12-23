@@ -1,5 +1,5 @@
 <div class="core-translation">
-  <div class="key">{{key}}</div>
+  <div class="key" [cdkCopyToClipboard]="key" (click)="copiedKey()">{{key}}</div>
 
   <table>
     <tr *ngFor="let lang of setting.languages$ | async">

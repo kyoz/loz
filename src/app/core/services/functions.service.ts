@@ -107,6 +107,7 @@ export class FunctionsService {
       // Delay a litle bit to ensure loader is displayed
       setTimeout(() => {
         this.data.tree$.next(this.localeParser.parseToTree(localeMap));
+        this.data.calculateTranslatedProcess();
 
         this.loader.hide();
 
@@ -149,6 +150,7 @@ export class FunctionsService {
 
     this.loader.hide();
     this.notify.pushNotify('NOTIFY.SAVED', null, 1500);
+    this.data.calculateTranslatedProcess();
   }
 
   private isValidI18nFolder(fileNames: string[]): boolean {

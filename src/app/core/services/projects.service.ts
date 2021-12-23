@@ -10,6 +10,7 @@ import { StorageService } from './storage.service';
 
 @Injectable({providedIn: 'root'})
 export class ProjectsService {
+
   projectList: Project[] = [];
   currentProject$: BehaviorSubject<Project> = new BehaviorSubject(undefined);
 
