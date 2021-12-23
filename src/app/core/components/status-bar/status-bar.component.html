@@ -6,8 +6,8 @@
   </div>
 
   <div class="right">
-    <div class="label">
-      {{ 'TEXT.TRANSLATED' | translate }}: 90%
+    <div class="label" *ngIf="projects.currentProject$ | async">
+      {{ 'TEXT.TRANSLATED' | translate }}: {{data.proccessed$ | async}}%
     </div>
   </div>
 </div>

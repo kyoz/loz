@@ -10,8 +10,9 @@ import { DataService } from '../../services/data.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoreEditorComponent {
-  constructor(public data: DataService) {
-  }
+
+  constructor(public data: DataService) { }
+
 }
 
 

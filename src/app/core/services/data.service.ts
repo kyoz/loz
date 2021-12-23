@@ -18,6 +18,8 @@ export class DataService {
   tree$: BehaviorSubject<Locale[]> = new BehaviorSubject([]);
   expandNodeRequest$: BehaviorSubject<Locale> = new BehaviorSubject(undefined);
 
+  proccessed$: BehaviorSubject<number> = new BehaviorSubject(0);
+
   currentNode$ = new BehaviorSubject(undefined);
   currentKeys$ = new BehaviorSubject([]);
 
@@ -47,6 +49,14 @@ export class DataService {
       }
 
       this.currentKeys$.next(this.recursiveParseKeys(currentNode));
+    });
+
+    this.setting.languages$.pipe(distinctUntilChanged()).subscribe(languages => {
+      if (!languages || !languages.length) {
+        return;
+      }
+
+      this.calculateTranslatedProcess();
     });
   }
 
@@ -80,6 +90,7 @@ export class DataService {
     const newTree = _.orderBy(this.addIdRecursive(tree, keys), ['path'], ['asc'])
 
     this.tree$.next(newTree);
+    this.calculateTranslatedProcess();
 
     this.notify.pushNotify('NOTIFY.TRANSLATION_ID_ADDED');
   }
@@ -161,6 +172,7 @@ export class DataService {
     }
 
     this.removeNode(this.currentNode$.value);
+    this.calculateTranslatedProcess();
   }
 
   private removeNode(node: Locale) {
@@ -216,6 +228,45 @@ export class DataService {
     return tree;
   }
 
+  calculateTranslatedProcess() {
+    const count = this.recursiveCalculateTranslated(this.tree$.value);
+
+    if (!count.total) {
+      this.proccessed$.next(0);
+      return;
+    }
+
+    this.proccessed$.next(
+      Math.round((count.processed/count.total) * 10000) / 100
+    );
+  }
+
+  private recursiveCalculateTranslated(tree) {
+    let total = 0;
+    let processed = 0;
+
+    for (const branch of tree) {
+
+      if (branch.values.length) {
+        const record = this.dataMap[branch.path];
+        const languages = this.setting.languages$.value;
+
+        total += languages.length;
+        processed += branch.values.filter(lang => record[lang.locale] !== '').length;
+
+      } else {
+        const res = this.recursiveCalculateTranslated(branch.children);
+        total += res.total;
+        processed += res.processed;
+      }
+    }
+
+    return {
+      total,
+      processed
+    };
+  }
+
   isExistedKey(keyPath: string): boolean {
     return this.pathMap[keyPath] === true;
   }
@@ -224,6 +275,7 @@ export class DataService {
     this.tree$.next([]);
     this.currentNode$.next(undefined);
     this.currentKeys$.next(undefined);
+    this.proccessed$.next(0);
     this.dataMap = {};
   }
 }

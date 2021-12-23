@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 // Services
+import { DataService } from '../../services/data.service';
 import { DialogsService } from '../../services/dialogs.service';
 import { ProjectsService } from '../../services/projects.service';
 
@@ -17,7 +18,8 @@ export class CoreStatusBarComponent {
   constructor(
     public dialogs: DialogsService,
     public projects: ProjectsService,
-  ) {
-  }
+    public data: DataService,
+  ) { }
+
 }
 
