@@ -8,6 +8,7 @@ import { LanguagesDialog } from '../dialogs/languages/languages.dialog';
 import { LatestProjectsDialog } from '../dialogs/latest-projects/latest-projects.dialog';
 import { TranslationAddDialog } from '../dialogs/translation-add/translation-add.dialog';
 import { ConfirmDialog } from '../dialogs/confirm/confirm.dialog';
+import { TranslationProgressDialog } from '../dialogs/translation-progress/translation-progress.dialog';
 
 
 @Injectable({providedIn: 'root'})
@@ -82,4 +83,15 @@ export class DialogsService {
       }
     }).afterClosed();
   }
+
+  openTranslationProgress() {
+    return this.matDialog.open(TranslationProgressDialog, {
+      autoFocus: false,
+      width: '580px',
+      height: '364px',
+      maxWidth: '94vw',
+      maxHeight: '94vh',
+    });
+  }
+
 }

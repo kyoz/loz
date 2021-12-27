@@ -7,19 +7,21 @@ import { MaterialComponentsModule } from '../modules/material.module';
 
 // Dialogs
 import { ConfigDialog } from './config/config.dialog';
+import { ConfirmDialog } from './confirm/confirm.dialog';
 import { CreateProjectDialog } from './create-project/create-project.dialog';
 import { LanguagesDialog } from './languages/languages.dialog';
 import { LatestProjectsDialog } from './latest-projects/latest-projects.dialog';
 import { TranslationAddDialog } from './translation-add/translation-add.dialog';
-import { ConfirmDialog } from './confirm/confirm.dialog';
+import { TranslationProgressDialog } from './translation-progress/translation-progress.dialog';
 
 const DIALOGS = [
   ConfigDialog,
+  ConfirmDialog,
   CreateProjectDialog,
   LanguagesDialog,
   LatestProjectsDialog,
   TranslationAddDialog,
-  ConfirmDialog,
+  TranslationProgressDialog,
 ];
 
 @NgModule({
@@ -31,13 +33,13 @@ const DIALOGS = [
     TranslateModule.forChild(),
   ],
   declarations: [
-    ...DIALOGS
+    DIALOGS
   ],
   exports: [
-    ...DIALOGS
+    DIALOGS
   ],
   entryComponents: [
-    ...DIALOGS
+    DIALOGS
   ],
 })
 export class CoreDialogsModule {	}

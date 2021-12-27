@@ -6,7 +6,10 @@
   </div>
 
   <div class="right">
-    <div class="label" *ngIf="projects.currentProject$ | async">
+    <div class="label"
+         *ngIf="projects.currentProject$ | async"
+         (click)="dialogs.openTranslationProgress()"
+    >
       {{ 'TEXT.TRANSLATED' | translate }}: {{data.proccessed$ | async}}%
     </div>
   </div>

@@ -22,7 +22,6 @@
     "USAGE": "How to use?",
     "YES": "Yes"
   },
-  "ERROR": "",
   "LABEL": {
     "AUTO_SAVE": "Auto save",
     "CHOOSE_FOLDER": "Click to choose folder",
@@ -43,6 +42,7 @@
     "VALID_TRANSLATION_HINT": "Valid translation ID"
   },
   "NOTIFY": {
+    "COPIED_KEY": "Copied",
     "CREATED_PROJECT": "Created project succesfully",
     "INVALID_FOLDER": "Please choose an empty folder to init",
     "INVALID_I18N_FOLDER": "Not valid i18n folder",
@@ -53,8 +53,7 @@
     "SELECT_PRIMARY_LANGUAGE": "You must choose primary language",
     "SELECT_TRANSLATION_TO_REMOVE": "Please select a translation to remove",
     "TRANSLATION_ID_ADDED": "Translation added succesfully",
-    "TRANSLATION_ID_EXISTED": "Translation Id is already existed. Please use another one",
-    "COPIED_KEY": "Copied"
+    "TRANSLATION_ID_EXISTED": "Translation Id is already existed. Please use another one"
   },
   "TEXT": {
     "CONFIRM_REMOVE_TRANSLATION": "I hope you know what you are doing :D",
@@ -78,6 +77,7 @@
     "CREATE_NEW_TRANSLATION": "Create new translation",
     "LANGUAGE_CONFIGURATION": "Languages Config",
     "RECENT_PROJECTS": "Recent projects",
-    "SELECT_AN_EMPTY_FOLDER": "Please choose an empty folder"
+    "SELECT_AN_EMPTY_FOLDER": "Please choose an empty folder",
+    "TRANSLATION_PROGRESS": "Translation Progress"
   }
 }

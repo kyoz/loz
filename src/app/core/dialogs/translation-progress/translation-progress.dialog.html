@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="header">
+    <div class="title" translate>
+      TITLE.TRANSLATION_PROGRESS
+    </div>
+  </div>
+
+  <div class="content">
+    <table>
+      <tr *ngFor="let lang of languages$ | async">
+        <td>
+          <core-language-icon [languageId]="lang.id" height="24"></core-language-icon>
+        </td>
+
+        <td>
+          {{lang.description}}
+        </td>
+
+        <td>
+        {{lang.progress}}%
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    <button mat-button (click)="close()">
+      <span translate>ACTION.CLOSE</span>
+    </button>
+  </div>
+</div>

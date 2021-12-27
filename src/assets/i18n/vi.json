@@ -22,7 +22,6 @@
     "USAGE": "Cách sử dụng?",
     "YES": "Đồng ý"
   },
-  "ERROR": "",
   "LABEL": {
     "AUTO_SAVE": "Tự động lưu",
     "CHOOSE_FOLDER": "Nhấn vào đây để chọn thư mục",
@@ -43,6 +42,7 @@
     "VALID_TRANSLATION_HINT": "Mã bản dịch hợp lệ"
   },
   "NOTIFY": {
+    "COPIED_KEY": "Đã sao chép",
     "CREATED_PROJECT": "Khởi tạo dự án thành công",
     "INVALID_FOLDER": "Hãy chọn một thư mục rỗng để khởi tạo",
     "INVALID_I18N_FOLDER": "Thư mục i18n không hợp lệ",
@@ -53,8 +53,7 @@
     "SELECT_PRIMARY_LANGUAGE": "Bạn phải chọn ngôn ngữ chính",
     "SELECT_TRANSLATION_TO_REMOVE": "Hãy chọn một bản dịch để xóa",
     "TRANSLATION_ID_ADDED": "Thêm bản dịch thành công",
-    "TRANSLATION_ID_EXISTED": "Mã bản dịch đã tồn tại. Hãy chọn một mã khác",
-    "COPIED_KEY": "Đã sao chép"
+    "TRANSLATION_ID_EXISTED": "Mã bản dịch đã tồn tại. Hãy chọn một mã khác"
   },
   "TEXT": {
     "CONFIRM_REMOVE_TRANSLATION": "Hãy chắc rằng bạn biết bạn đang làm gì :D",
@@ -78,6 +77,7 @@
     "CREATE_NEW_TRANSLATION": "Tạo bản dịch mới",
     "LANGUAGE_CONFIGURATION": "Tùy chỉnh ngôn ngữ",
     "RECENT_PROJECTS": "Dự án gần đây",
-    "SELECT_AN_EMPTY_FOLDER": "Chọn một thư mục rỗng"
+    "SELECT_AN_EMPTY_FOLDER": "Chọn một thư mục rỗng",
+    "TRANSLATION_PROGRESS": "Tiến độ"
   }
 }
